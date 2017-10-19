@@ -1,1 +1,84 @@
-{"load":{"allowedBundles":["system@^3.x","templatelayout@^3.x","map@^3.x","notifier@^3.x","toolset@^3.x","parametermanager@^3.x","dn_basemapFader"]},"bundles":{"map":{"MapModelFactory":{"_configData":{"maps":[{"baseLayer":[{"id":"streets","title":"Streets","service":"streets","layers":["*"]},{"enabled":true,"service":"worldtopo","category":{"title":"Topographische Karte","description":"Eine topographische Weltkarte","imgUrl":""},"children":[],"id":"worldtopo_1441977062099","opacity":1}]}]}},"MapState":{"initialExtent":{"xmin":600000,"ymin":5800000,"xmax":1700000,"ymax":7600000,"spatialReference":{"wkid":3857}}},"MappingResourceRegistryFactory":{"_knownServices":{"services":[{"id":"streets","type":"AGS_TILED","url":"//services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"},{"id":"worldtopo","url":"http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer","type":"AGS_TILED","title":"Topographische Karte","description":"Eine topographische Weltkarte"}]}}}}}
+{
+  "properties": {
+    "amdPackages": "apprt@3.x"
+  },
+  "load": {
+    "bundleLocations": [
+      "localbundles",
+      "bundles"
+    ],
+    "allowedBundles": [
+      "system@3.x",
+      "templatelayout@3.x",
+      "map@3.x",
+      "notifier@3.x",
+      "toolset@3.x",
+      "parametermanager@3.x",
+      "console@3.x",
+      "dn_basemapfader"
+    ]
+  },
+  "bundles": {
+    "map": {
+      "MapModelFactory": {
+        "_configData": {
+          "maps": [
+            {
+              "baseLayer": [
+                {
+                  "id": "streets",
+                  "title": "Streets",
+                  "service": "streets",
+                  "layers": [
+                    "*"
+                  ]
+                },
+                {
+                  "enabled": true,
+                  "service": "worldtopo",
+                  "category": {
+                    "title": "Topographische Karte",
+                    "description": "Eine topographische Weltkarte",
+                    "imgUrl": ""
+                  },
+                  "children": [],
+                  "id": "worldtopo_1441977062099",
+                  "opacity": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "MapState": {
+        "initialExtent": {
+          "xmin": 600000,
+          "ymin": 5800000,
+          "xmax": 1700000,
+          "ymax": 7600000,
+          "spatialReference": {
+            "wkid": 3857
+          }
+        }
+      },
+      "MappingResourceRegistryFactory": {
+        "_knownServices": {
+          "services": [
+            {
+              "id": "streets",
+              "type": "AGS_TILED",
+              "url": "//services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"
+            },
+            {
+              "id": "worldtopo",
+              "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
+              "type": "AGS_TILED",
+              "title": "Topographische Karte",
+              "description": "Eine topographische Weltkarte"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
