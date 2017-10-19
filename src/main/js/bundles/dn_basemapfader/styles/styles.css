@@ -1,0 +1,24 @@
+.ctBasemapFader .bottomRegion{
+    height: 20px;
+    width: 100%;
+}
+
+.ctBasemapFader .baseLayerSelectbox{
+    float: left;
+}
+
+.ctBasemapFader .fadetoLayerSelectbox{
+    float: right;
+}
+
+.ctBasemapFader .dijitRuleContainer.dijitRuleContainerH.dijitRuleLabelsContainer.dijitRuleLabelsContainerH,
+.ctBasemapFader .ctTransparencySlider .title{
+    display: none;
+}
+
+.ctBasemapFader .noLayersMessageNode{
+    width: 100px;
+    height: 23px;
+    float: right;
+    font-size: 10px;
+}
