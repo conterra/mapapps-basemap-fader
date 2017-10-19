@@ -15,8 +15,8 @@
       "toolset@3.x",
       "parametermanager@3.x",
       "console@3.x",
-      "banner@^3.x",
-      "custominfo@^3.x",
+      "banner@3.x",
+      "custominfo@3.x",
       "dn_basemapfader"
     ]
   },
@@ -100,7 +100,7 @@
         "label": "Developer Network",
         "image": "https://www.conterra.de/~/media/conterra/images/site_logos/conterra-logo.ashx",
         "imagePosition": "above",
-        "link": "http://developernetwork.conterra.de"
+        "link": "https://developernetwork.conterra.de"
       }
     },
     "templates": {
