@@ -14,7 +14,7 @@
     "Require-Bundle": [
         {
             "name": "map",
-            "version": "^3.x"
+            "version": "3.x"
         }
     ],
     
@@ -29,8 +29,6 @@
             "title": "${window.title}",
             "dockTool": "basemapFaderTool",
             "marginBox": {
-                "t": 200,
-                "r": 40,
                 "w": 350,
                 "h": 125
             },

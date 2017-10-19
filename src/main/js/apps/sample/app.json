@@ -79,6 +79,29 @@
           ]
         }
       }
+    },
+    "templates": {
+      "TemplateModel": {
+        "_selectedTemplate": "seasons",
+        "_templates": [
+          {
+            "name": "seasons",
+            "widgets": [
+              {
+                "widgetRole": "basemapFader",
+                "window": {
+                  "marginBox": {
+                    "t": 60,
+                    "r": 100,
+                    "w": 350,
+                    "h": 125
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 }
