@@ -9,6 +9,8 @@
     "Bundle-Icon": {},
     "Bundle-License": {},
 
+    "Product-Name": "devnet-mapapps-basemap-fader",
+
     "Require-Bundle": [
         {
             "name": "map"
