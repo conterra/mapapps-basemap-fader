@@ -2,10 +2,16 @@
 
 Sample App
 ------------------
-https://demos.conterra.de/mapapps/resources/apps/downloads_*/index.html
+https://demos.conterra.de/mapapps/resources/apps/downloads_basemapfader/index.html
 
 Installation Guide
 ------------------
+Add the Bundle and at least two basemaps to the app. If you don't add it to another toolset it willn automatically appear in the toolset in the left-middle.
+
+Constraints
+------------------
+The bundle does not work with neither the basemaptoggler nor the basemapgallery.
+The follow-me function does not work.
 
 Development Guide
 ------------------
