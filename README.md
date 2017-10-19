@@ -1,4 +1,5 @@
 # Basemap Fader Bundle
+This bundle provides a widget to fade from one baselayer to another baselayer.
 
 Sample App
 ------------------
