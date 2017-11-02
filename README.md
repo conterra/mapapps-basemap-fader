@@ -5,6 +5,8 @@ Sample App
 ------------------
 https://demos.conterra.de/mapapps/resources/apps/downloads_basemapfader/index.html
 
+![Screenshot Sample App Basemap Fader](https://github.com/conterra/mapapps-basemap-fader/blob/master/basemapFader.JPG)
+
 Installation Guide
 ------------------
 Add the Bundle and at least two basemaps to the app. If you don't add it to another toolset it will automatically appear in the toolset in the left-middle.
