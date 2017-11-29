@@ -14,31 +14,43 @@
  * limitations under the License.
  */
 module.exports = {
-    root: ({
-        bundleName: "Basemap Fader",
-        bundleDescription: "The Basemap Fader is a new Widget that allows you to fade two basemaps into each other.",
-        ui: {
-            title: "Basemap Fader",
-            basemaps: "Basemaps",
-            close: "Close",
+    root: {
+        apptitle: "Basemap Fader Sample",
+        custominfo: {
+            content: "This app shows the functionality of the basmeap Fader Bundle which allows you to fade two basemaps into each other."
+        },
+        map: {
             basemaps: {
                 streets: "Street Map",
                 topo: "Topographical Map",
                 satellite: "Aerial (hybrid)",
-                grey: "Grey",
-                'dark-gray': "Dark Grey",
-                oceans: "Oceans",
-                'national-geographic': "National Geographic",
-                terrain: "Terrain",
-                osm: "Open Street Map"
+                gray: "Grey"
             },
             basemap1: "Select a basemap",
             basemap2: "Select another basemap",
+            close: "CLOSE"
+
+        },
+        search: {
+            title: "Addresses"
         },
         tool: {
             title: "Basemap Fader",
-            tooltip: "Basemap Fader"
+            tooltip: "Basmap Fader"
+        },
+        common: {
+            number: "Number",
+            area: "Area [ha]",
+            totalArea: "Percentage of the total area [%]",
+            name: "Name",
+            provider: "Provider",
+            address: "Adress",
+            furtherinfo: "Further Information",
+            precint: "Precint",
+            district: "District",
+            private: "privater",
+            municipal: "municipal"
         }
-    }),
+    },
     "de": true
 };

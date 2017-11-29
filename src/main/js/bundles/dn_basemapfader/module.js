@@ -13,8 +13,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-define([
-    ".",
-    "./BasemapFaderFactory",
-    "ct/ui/controls/forms/TransparencySlider"
-    ], {});
+import ".";
+import "./BasemapFaderWidgetFactory";

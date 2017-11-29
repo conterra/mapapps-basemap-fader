@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2017 con terra GmbH (info@conterra.de)
+/*
+ * Copyright (C) 2015 con terra GmbH (info@conterra.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,27 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-.ctBasemapFader .bottomRegion{
-    height: 20px;
-    width: 100%;
-}
+const gulp = require("gulp");
+const run_sequence = require('run-sequence');
+const mapapps = require('ct-mapapps-gulp-js');
 
-.ctBasemapFader .baseLayerSelectbox{
-    float: left;
-}
+mapapps.registerTasks({
+    themes: ["sample_theme"],
+    hasBaseThemes: true,
+    forceTranspile: true
+});
 
-.ctBasemapFader .fadetoLayerSelectbox{
-    float: right;
-}
-
-.ctBasemapFader .dijitRuleContainer.dijitRuleContainerH.dijitRuleLabelsContainer.dijitRuleLabelsContainerH,
-.ctBasemapFader .ctTransparencySlider .title{
-    display: none;
-}
-
-.ctBasemapFader .noLayersMessageNode{
-    width: 100px;
-    height: 23px;
-    float: right;
-    font-size: 10px;
-}
+gulp.task("default", function(callback) {
+    run_sequence(
+            "copy-resources",
+            "themes-copy",
+            ["js-transpile", "themes-compile"],
+            callback);
+});

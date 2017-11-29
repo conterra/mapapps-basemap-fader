@@ -13,18 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-define(
-    ({
-        bundleName: "Basiskarten \u00DCberblender",
-        bundleDescription: "Erm\u00F6glicht das \u00DCberblenden von einer Basiskarte zu einer gew\u00E4hlten anderen Basiskarte.",
-        ui: {
-            noLayersMessageNode: "Keine weiteren Basiskarten konfiguriert."
+module.exports = {
+    bundleName: "Grundkarten Blende",
+    bundleDescription: "Die Grundkarten Blende ist ein neues Widget, welches das überblenden von zwei Grundkarten erm\u00F6glicht.",
+    ui: {
+        title: "Grundkarten Blende",
+        close: "Schließen",
+        basemaps: "Hintergrundkarten",
+        basemaps: {
+            streets: "Stra\u00DFenkarte",
+            topo: "Topographische Karte",
+            satellite: "Luftbild",
+            grey: "Grau",
+            'dark-gray': "Dunkelgrau",
+            oceans: "Meere",
+            'national-geographic': "National Geographic",
+            terrain: "Terrain",
+            osm: "Open Street Map"
+
         },
-        window: {
-            title: "Basiskarten \u00DCberblender"
-        },
-        tool: {
-            title: "Basiskarten \u00DCberblenden"
-        }
-    })
-);
+        basemaps1: "Wählen Sie eine Grundkarte",
+        basemap2: "Wählen Sie eine andere Grundkarte"
+    },
+    tool: {
+        title: "Grundkarten Blende",
+        tooltip: "Grundkarten Blende"
+    }
+};

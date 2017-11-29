@@ -1,28 +1,24 @@
 # Basemap Fader Bundle
-This bundle provides a widget to fade from one baselayer to another baselayer.
+The Basemap Fader Bundle is a new Widget that allows you to fade two basemap into eacht other.
+
+![Screenshot App](https://github.com/conterra/mapapps-vuetoc/blob/master/Vue.JPG)
+
 
 Sample App
 ------------------
-https://demos.conterra.de/mapapps/resources/apps/downloads_basemapfader/index.html
+https://demos.conterra.de/mapapps/resources/apps/downloads_basemapfader4/index.html
 
-![Screenshot Sample App Basemap Fader](https://github.com/conterra/mapapps-basemap-fader/blob/master/basemapFader.JPG)
+![Screenshot Sample App Basemap Fader](https://github.com/conterra/mapapps-basemap-fader/blob/master/basmapFader4x.JPG)
 
 Installation Guide
 ------------------
-Add the Bundle and at least two basemaps to the app. If you don't add it to another toolset it will automatically appear in the toolset in the left-middle.
+**Requirement: map.apps 4.2.0**
 
-This bundle cannot be combined with the 
+Simply add the bundle "dn_basemapfader" to your map.apps 4 app. Additionally you should load at least
+two basemaps into the app.
 
-1. basemaptoggler or basemapgallery bundle.
-The basemapgallery ensures that only one Baselayer is enabled for every MapModel structure change event.
-The basemapfader bundle activates two basemaplayers at the same time.
-
-2. followme bundle: The opacity of the base maps is controlled by CSS, which is not transmitted.
-
-Constraints
-------------------
-The bundle does not work with neither the basemaptoggler nor the basemapgallery.
-The follow-me function does not work.
+#### Restrictions
+This bundle does not work for vector or hybrid basemaps.
 
 Development Guide
 ------------------
