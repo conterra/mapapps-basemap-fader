@@ -5,11 +5,15 @@ Sample App
 ------------------
 https://demos.conterra.de/mapapps/resources/apps/downloads_basemapfader/index.html
 
-![Screenshot Sample App Basemap Fader](https://github.com/conterra/mapapps-basemap-fader/blob/master/basemapFader.JPG)
+![Screenshot Sample App Basemap Fader](https://github.com/conterra/mapapps-basemap-fader/blob/3.x/basemapFader.JPG)
 
 Installation Guide
 ------------------
 Add the Bundle and at least two basemaps to the app. If you don't add it to another toolset it will automatically appear in the toolset in the left-middle.
+
+
+Constraints
+------------------
 
 This bundle cannot be combined with the 
 
@@ -18,11 +22,6 @@ The basemapgallery ensures that only one Baselayer is enabled for every MapModel
 The basemapfader bundle activates two basemaplayers at the same time.
 
 2. followme bundle: The opacity of the base maps is controlled by CSS, which is not transmitted.
-
-Constraints
-------------------
-The bundle does not work with neither the basemaptoggler nor the basemapgallery.
-The follow-me function does not work.
 
 Development Guide
 ------------------
