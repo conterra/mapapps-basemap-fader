@@ -40,7 +40,7 @@
 
 <script>
 import Bindable from "apprt-vue/mixins/Bindable";
-import TileLayer from "esri/layers/TileLayer" //"esri/layers/ImageryLayer";  //which kind of layer?
+import TileLayer from "esri/layers/TileLayer" 
 
 export default {
     mixins: [Bindable],
