@@ -540,8 +540,8 @@
         </plugins>
     </build>
     <scm>
-        <connection>scm:git:https://github.com/conterra/mapapps-basemap-fader</connection>
-        <developerConnection>scm:git:https://github.com/conterra/mapapps-basemap-fader</developerConnection>
+        <connection>scm:git:https://github.com/conterra/mapapps-basemap-fader.git</connection>
+        <developerConnection>scm:git:https://github.com/conterra/mapapps-basemap-fader.git</developerConnection>
         <url>https://github.com/conterra/mapapps-basemap-fader</url>
         <tag>HEAD</tag>
     </scm>
