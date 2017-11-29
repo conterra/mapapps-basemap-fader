@@ -1,9 +1,6 @@
 # Basemap Fader Bundle
 The Basemap Fader Bundle is a new Widget that allows you to fade two basemap into eacht other.
 
-![Screenshot App](https://github.com/conterra/mapapps-vuetoc/blob/master/Vue.JPG)
-
-
 Sample App
 ------------------
 https://demos.conterra.de/mapapps/resources/apps/downloads_basemapfader4/index.html
