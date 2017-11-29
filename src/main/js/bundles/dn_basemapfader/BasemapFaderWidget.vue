@@ -15,7 +15,8 @@
                         </v-select>
                     </v-flex>
                     <v-flex xs6>
-                        <v-select id="selectedBasemap2" v-model="selectedBasemap2" v-bind:items="basemaps" class="input-group--focused" item-value="id"
+                        <v-select id="selectedBasemap2" v-model="selectedBasemap2" v-bind:items="basemaps"
+                                  class="input-group--focused" item-value="id"
                                   item-text="title" v-on:input="{addBasemapAsLayer(), adjustOpacity()}">
                         </v-select>
                     </v-flex>
@@ -40,7 +41,7 @@
 
 <script>
 import Bindable from "apprt-vue/mixins/Bindable";
-import TileLayer from "esri/layers/TileLayer" 
+import TileLayer from "esri/layers/TileLayer"
 
 export default {
     mixins: [Bindable],
@@ -83,21 +84,33 @@ export default {
                 this.map.remove(this.baselayer)
             }
             let id = this.$data.selectedBasemap2;
+            console.log(this.basemaps);
             for (var i = 0; i < this.basemaps.length; i++) {
                 if (this.basemaps[i].id === id) {
 
-                    var basemap = this.basemaps[i].basemap;
-                }
+                    let basemap = this.basemaps[i].basemap;
+                    console.log(basemap);
+                    if (basemap.baseLayers.items.length > 0) {
+                        debugger;
+                        var layer = this.baselayer = new TileLayer({
+                            id: basemap.id,
+                            title: basemap.title,
+                            url: basemap.baseLayers.items[0].url
+                    });
+
+                    }else var layer = this.baselayer = new TileLayer({
+                        id: basemap.id,
+                        title: basemap.title,
+                        url: this.basemapURL[basemap.id]
+                    });
+
+
+                    this.map.add(layer);
+                    this.map.reorder(layer, 0);
+                };
             }
             ;
-            var layer = this.baselayer = new TileLayer({
-                id: basemap.id,
-                title: basemap.title,
-                url: this.basemapURL[basemap.id]
-            });
 
-            this.map.add(layer);
-            this.map.reorder(layer, 0);
         },
         close: function () {
             this.$emit('close', {});

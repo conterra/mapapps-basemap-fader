@@ -96,6 +96,15 @@
             "id": "streets",
             "title": "${map.basemaps.streets}",
             "basemap": "streets"
+          },
+          {
+            "id": "custom_gray",
+            "title": "Gray",
+            "description": "This basemap uses a custom layer",
+            "basemap" :{
+              "type": "AGS_TILED",
+              "url": "https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer"
+            }
           }
         ],
         "map": {
