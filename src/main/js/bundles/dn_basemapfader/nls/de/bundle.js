@@ -17,7 +17,7 @@ module.exports = {
     bundleName: "Grundkarten Blende",
     bundleDescription: "Die Grundkarten Blende ist ein neues Widget, welches das überblenden von zwei Grundkarten erm\u00F6glicht.",
     ui: {
-        title: "Grundkarten Blende",
+        title: "Basemap Fader",
         close: "Schließen",
         basemaps: "Hintergrundkarten",
         basemaps: {
@@ -36,7 +36,7 @@ module.exports = {
         basemap2: "Wählen Sie eine andere Grundkarte"
     },
     tool: {
-        title: "Grundkarten Blende",
-        tooltip: "Grundkarten Blende"
+        title: "Basemap Fader",
+        tooltip: "Basemap Fader"
     }
 };
