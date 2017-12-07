@@ -24,16 +24,11 @@ class BasemapFaderWidgetFactory {
 
     activate() {
         let envs = this._componentContext.getBundleContext().getCurrentExecutionEnvironment();
-        let isMobile = this.isMobile = envs.some((env) => {
-            return env.name === "Mobile"
-        });
         this._initComponent({
             mapWidgetModel: this._mapWidgetModel,
             basemapModel: this._basemapModel,
             tool: this._tool,
-            properties: this._properties,
-            layerParser: this._layerConfigParser,
-
+            properties: this._properties
         });
     }
 
