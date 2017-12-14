@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 module.exports = {
-    bundleName: "Grundkarten Blende",
-    bundleDescription: "Die Grundkarten Blende ist ein neues Widget, welches das überblenden von zwei Grundkarten erm\u00F6glicht.",
+    bundleName: "Basemap Fader",
+    bundleDescription: "Der Basemap Fader ist ein neues Widget, welches das überblenden von zwei Grundkarten erm\u00F6glicht.",
     ui: {
         title: "Basemap Fader",
         close: "Schließen",
