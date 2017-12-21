@@ -6,35 +6,36 @@
                     <v-btn color="primary" dark slot="activator">Basemap Fader</v-btn>
                     <v-card>
                         <v-container grid-list-md>
-
                             <v-layout row wrap>
                                 <v-flex xs6>
                                     <v-card>
-                                        <v-select id="selectedId" v-model="selectedId" v-bind:items="basemaps"
-                                                  item-value="id"
-                                                  class="input-group--focused" item-value="id" hide-selected="true"
-                                                  item-text="title"
-                                                  v-on:input="changeBasemap">
-                                        </v-select>
+                                        <div class="ml-2 mr-2">
+                                            <v-select id="selectedId" v-model="selectedId" v-bind:items="basemaps"
+                                                      class="input-group--focused" item-value="id" hide-selected="true"
+                                                      item-text="title">
+                                            </v-select>
+                                        </div>
                                     </v-card>
                                 </v-flex>
 
 
                                 <v-flex xs6>
                                     <v-card>
+                                        <div class="ml-2 mr-2">
                                         <v-select id="selectedBasemap2" v-model="selectedBasemap2"
                                                   v-bind:items="basemaps"
                                                   class="input-group--focused" item-value="id"
-                                                  item-text="title" v-on:input="{addBasemapAsLayer(), adjustOpacity()}">
+                                                  item-text="title" v-on:input="addBasemapAsLayer">
                                         </v-select>
+                                        </div>
                                     </v-card>
                                 </v-flex>
 
                                 <v-flex xs12>
                                     <v-card>
                                         <v-card-text>
-                                            <v-slider id="slider" v-model.lazy="value"
-                                                      v-on:input="adjustOpacity()"></v-slider>
+                                            <v-slider class="pt-0" hide-details id="slider" v-model="opacity"
+                                                      v-on:input="adjustOpacity"></v-slider>
                                         </v-card-text>
                                     </v-card>
                                 </v-flex>
@@ -60,71 +61,40 @@ export default {
             map: [],
             basemaps: [],
             layers: [],
+            opacity: 0,
             selectedId: "",
             selectedBasemap2: "",
-            configLayer: [],
             basemapURL: [],
             baselayer: {},
-            i18n: {
-                type: Object,
-                default: function () {
-                    return {
-                        basemaps: "Basemaps",
-                        basemap1: "Select a basemap",
-                        basemap2: "Select another basemap",
-                        close: "Close"
-                    }
-                }
-            }
         };
     },
     methods: {
-        adjustOpacity: function () {
+        adjustOpacity: function (value) {
             let layers = this.layers.items;
-            layers[0].opacity = (slider.__vue__.inputWidth / 100) //the second baselayer is defined as the first layer of the array (line 99)
+            layers[0].opacity = (slider.__vue__.inputWidth / 100) //the second baselayer is defined as the first layer of the array (line 106)
 
         },
 
         changeBasemap: function () {
             let id = this.selectedId;
+            debugger;
         },
 
         addBasemapAsLayer: function () {
             if (this.baselayer.id) {
-                this.map.remove(this.baselayer)
-            }
-            let id = this.$data.selectedBasemap2;
+                this.map.remove(this.baselayer)};
+            let id = this.selectedBasemap2;
 
-            for (var i = 0; i < this.basemaps.length; i++) {
-                if (this.basemaps[i].id === id) {
+            let basemap = this.basemapModel.findItemById(id).basemap;
+            let clone = basemap.clone();
+            clone.load();
 
-                    let basemap = this.basemaps[i].basemap;
+            let baselayer2 = this.baselayer = clone.baseLayers.items[0];
+            baselayer2.set("opacity", this.opacity / 100);
 
-                    if (basemap.baseLayers.items.length > 0) {
-                        var layer = this.baselayer = new TileLayer({
-                            id: basemap.id,
-                            title: basemap.title,
-                            url: basemap.baseLayers.items[0].url
-                        });
-
-                    } else var layer = this.baselayer = new TileLayer({
-                        id: basemap.id,
-                        title: basemap.title,
-                        url: this.basemapURL[basemap.id]
-                    });
-
-
-                    this.map.add(layer);
-                    this.map.reorder(layer, 0);
-                }
-                ;
-            }
-            ;
-
-        },
-        close: function () {
-            this.$emit('close', {});
+            this.map.add(baselayer2);
+            this.map.reorder(baselayer2, 0);
         }
     }
-};
+}
 </script>

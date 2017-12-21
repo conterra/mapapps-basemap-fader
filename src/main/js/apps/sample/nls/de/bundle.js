@@ -16,7 +16,7 @@
 module.exports = {
     apptitle: "Basemap Fader Sample",
     custominfo: {
-        content: "Diese App zeigt das Basemap Fader Bundle, welches es erm\u00F6glicht, zwei Grundkarten ineinander zu schmelzen."
+        content: "Diese App zeigt das Basemap Fader Bundle, welches es erm\u00F6glicht, zwei Grundkarten ineinander zu schmelzen. Um die Funktinoalität auszuprobieren, klicken Sie auf den Knopf in der rechtsobenen Ecke"
     },
     map: {
         basemaps: {

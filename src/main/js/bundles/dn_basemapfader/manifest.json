@@ -1,6 +1,6 @@
 {
   "name": "dn_basemapfader",
-  "version": "2.0.1-SNAPSHOT",
+  "version": "2.0.0-SNAPSHOT",
   "title": "${bundleName}",
   "description": "${bundleDescription}",
   "vendor": "con terra GmbH",
@@ -24,7 +24,7 @@
       "widgetRole": "basemapFaderRole",
       "attachTo":"header_right"
 
-      }
+    }
   ],
   "components": [
     {
@@ -34,19 +34,7 @@
       ],
       "instanceFactory": true,
       "properties": {
-        "widgetRole": "basemapFaderRole",
-        "basemapIDs": {
-          "streets": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer",
-          "satellite": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
-          "hybrid": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
-          "topo": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
-          "gray": "https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer",
-          "dark-gray": "https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Dark_Gray_Base/MapServer",
-          "oceans": "https://services.arcgisonline.com/arcgis/rest/services/Ocean_Basemap/MapServer",
-          "national-geographic": "https://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer",
-          "terrain": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer",
-          "osm": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        }
+        "widgetRole": "basemapFaderRole"
       },
       "references": [
         {

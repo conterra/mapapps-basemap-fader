@@ -17,23 +17,7 @@ module.exports = {
     bundleName: "Basemap Fader",
     bundleDescription: "Der Basemap Fader ist ein neues Widget, welches das überblenden von zwei Grundkarten erm\u00F6glicht.",
     ui: {
-        title: "Basemap Fader",
-        close: "Schließen",
-        basemaps: "Hintergrundkarten",
-        basemaps: {
-            streets: "Stra\u00DFenkarte",
-            topo: "Topographische Karte",
-            satellite: "Luftbild",
-            grey: "Grau",
-            'dark-gray': "Dunkelgrau",
-            oceans: "Meere",
-            'national-geographic': "National Geographic",
-            terrain: "Terrain",
-            osm: "Open Street Map"
-
-        },
-        basemaps1: "Wählen Sie eine Grundkarte",
-        basemap2: "Wählen Sie eine andere Grundkarte"
+        title: "Basemap Fader"
     },
     tool: {
         title: "Basemap Fader",

@@ -58,7 +58,7 @@
               "title": "Information",
               "marginBox": {
                 "w": 300,
-                "h": 140,
+                "h": 160,
                 "l": 25,
                 "b": 70
               },
@@ -79,7 +79,8 @@
             "id": "topo",
             "title": "${map.basemaps.topo}",
             "basemap": "topo",
-            "icon": "filter_hdr"
+            "icon": "filter_hdr",
+            "opacity": 0.5
           },
           {
             "id": "satellite",

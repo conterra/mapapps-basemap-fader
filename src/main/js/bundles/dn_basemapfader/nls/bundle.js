@@ -18,22 +18,7 @@ module.exports = {
         bundleName: "Basemap Fader",
         bundleDescription: "The Basemap Fader is a new Widget that allows you to fade two basemaps into each other.",
         ui: {
-            title: "Basemap Fader",
-            basemaps: "Basemaps",
-            close: "Close",
-            basemaps: {
-                streets: "Street Map",
-                topo: "Topographical Map",
-                satellite: "Aerial (hybrid)",
-                grey: "Grey",
-                'dark-gray': "Dark Grey",
-                oceans: "Oceans",
-                'national-geographic': "National Geographic",
-                terrain: "Terrain",
-                osm: "Open Street Map"
-            },
-            basemap1: "Select a basemap",
-            basemap2: "Select another basemap",
+            title: "Basemap Fader"
         },
         tool: {
             title: "Basemap Fader",

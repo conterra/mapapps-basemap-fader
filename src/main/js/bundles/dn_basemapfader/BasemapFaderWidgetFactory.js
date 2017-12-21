@@ -18,11 +18,9 @@ import Vue from "apprt-vue/Vue";
 import VueDijit from "apprt-vue/VueDijit";
 import Binding from "apprt-binding/Binding";
 
-
 class BasemapFaderWidgetFactory {
 
     activate() {
-        let envs = this._componentContext.getBundleContext().getCurrentExecutionEnvironment();
         this._initComponent({
             mapWidgetModel: this._mapWidgetModel,
             basemapModel: this._basemapModel,
@@ -32,20 +30,23 @@ class BasemapFaderWidgetFactory {
 
     _initComponent({basemapModel, mapWidgetModel, properties}) {
         const vm = this.basemapFaderRoleComponent = new Vue(BasemapFaderWidget);
-        vm.i18n = this._i18n.get().ui;
+        vm.basemapModel = basemapModel;
         vm.basemaps = basemapModel.basemaps;
         vm.selectedId = basemapModel.selectedId;
         vm.selectedBasemap2 = basemapModel.basemaps[1].id;
         vm.map = mapWidgetModel.get("map");
         vm.layers = vm.map.get("layers");
         vm.basemapURL = properties.basemapIDs;
-        vm.addBasemapAsLayer();
-        Binding //binds Items to each other
-            .create()
-            .bindTo(vm, basemapModel)
-            .syncAll("selectedId", "selectedBasemap2", "basemaps")
-            .enable();
-        }
+
+        this.waitForBasemaps(vm.basemaps).then(() => {
+            vm.addBasemapAsLayer();
+            Binding //binds Items to each other
+                .create()
+                .bindTo(vm, basemapModel)
+                .syncAll("basemapModel", "selectedBasemap", "basemaps", "selectedId", "selectedBasemap2")
+                .enable();
+        });
+    }
 
 
     createInstance() {
@@ -53,5 +54,15 @@ class BasemapFaderWidgetFactory {
 
     }
 
+    waitForBasemaps(basemaps) {
+        return new Promise(resolve => {
+            basemaps[0].basemap.baseLayers.watch("length", () => {
+                resolve(this);
+            });
+        });
+    }
+
 }
+
+
 module.exports = BasemapFaderWidgetFactory;
