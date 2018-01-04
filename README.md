@@ -3,6 +3,9 @@ The Basemap Fader Bundle is a new Widget that allows you to fade two basemap int
 
 If you are using map.apps 3 see https://github.com/conterra/mapapps-basemap-fader/tree/3.x
 
+
+:heavy_exclamation_mark: desktop-only
+
 Sample App
 ------------------
 https://demos.conterra.de/mapapps/resources/apps/downloads_basemapfader4/index.html
