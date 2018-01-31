@@ -1,38 +1,34 @@
 <template>
     <div class="text-xs-center">
-        <v-menu offset-y :close-on-content-click="false" :nudge-width="400" :nudge-right="5" v-model="menu">
+        <v-menu offset-y :close-on-content-click="false" :nudge-width="400" :nudge-right="5">
             <v-btn color="primary" dark slot="activator">Basemap Fader</v-btn>
             <v-card>
                 <v-container grid-list-md>
                     <v-layout row wrap>
                         <v-flex xs6>
-                            <v-card>
-                                <div class="ml-2 mr-2">
-                                    <v-select id="selectedId" v-model="selectedId" v-bind:items="basemaps"
-                                              class="input-group--focused" item-value="id" hide-selected="true"
-                                              item-text="title">
-                                    </v-select>
-                                </div>
-                            </v-card>
+                            <div class="ml-2 mr-2">
+                                <v-select id="selectedId" v-model="selectedId" v-bind:items="basemaps"
+                                          class="input-group--focused" item-value="id" hide-selected="true"
+                                          item-text="title">
+                                </v-select>
+                            </div>
                         </v-flex>
                         <v-flex xs6>
-                            <v-card>
-                                <div class="ml-2 mr-2">
-                                    <v-select id="selectedBasemap2" v-model="selectedBasemap2"
-                                              v-bind:items="basemaps"
-                                              class="input-group--focused" item-value="id"
-                                              item-text="title" v-on:input="addBasemapAsLayer">
-                                    </v-select>
-                                </div>
-                            </v-card>
+                            <div class="ml-2 mr-2">
+                                <v-select id="selectedBasemap2" v-model="selectedBasemap2"
+                                          v-bind:items="basemaps"
+                                          class="input-group--focused" item-value="id"
+                                          item-text="title" v-on:input="addBasemapAsLayer">
+                                </v-select>
+                            </div>
                         </v-flex>
                         <v-flex xs12>
-                            <v-card>
+                            <v-container grid-list-md>
                                 <v-card-text>
                                     <v-slider class="pt-0" hide-details id="slider" v-model="opacity"
                                               v-on:input="adjustOpacity"></v-slider>
                                 </v-card-text>
-                            </v-card>
+                            </v-container>
                         </v-flex>
                     </v-layout>
                 </v-container>
