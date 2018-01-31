@@ -15,7 +15,7 @@
                         <v-flex xs6>
                             <div class="ml-2 mr-2">
                                 <v-select v-model="selectedId2" v-bind:items="basemaps" item-value="id"
-                                          item-text="title" v-on:input="$emit('addBasemapAsLayer')">
+                                          item-text="title" v-on:input="$emit('addBasemapAsLayer', $event)">
                                 </v-select>
                             </div>
                         </v-flex>

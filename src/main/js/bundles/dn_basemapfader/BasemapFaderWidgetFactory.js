@@ -20,67 +20,43 @@ import Binding from "apprt-binding/Binding";
 
 class BasemapFaderWidgetFactory {
 
-    // TODO: Add BaseMapFaderModel
-
     activate() {
-        let basemapModel = this._basemapModel;
-        this._initComponent(basemapModel);
+        this._initComponent();
     }
 
-    _initComponent(basemapModel) {
+    _initComponent() {
+        let basemapModel = this._basemapModel;
+        let model = this._basemapFaderModel;
         const vm = this.basemapFader = new Vue(BasemapFaderWidget);
-        vm.basemaps = basemapModel.basemaps;
+        vm.basemaps = model.basemaps;
         vm.selectedId = basemapModel.selectedId;
-        vm.selectedId2 = basemapModel.basemaps[1].id;
-        vm.opacity = 0;
+        vm.selectedId2 = model.selectedId2;
+        vm.opacity = model.opacity;
+        vm.baselayer = model.baselayer;
 
-        vm.$on('addBasemapAsLayer', () => {
-            this.addBasemapAsLayer();
+        vm.$on('addBasemapAsLayer', (layerId) => {
+            model.addBasemapAsLayer(layerId);
         });
         vm.$on('adjustOpacity', (value) => {
-            this.adjustOpacity(value);
+            model.adjustOpacity(value);
         });
 
-        this.waitForBasemaps(vm.basemaps).then(() => {
-            this.addBasemapAsLayer();
-            Binding
-                .create()
-                .bindTo(vm, basemapModel)
-                .syncAll("basemaps", "selectedId")
-                .enable();
-        });
+        Binding
+            .create()
+            .bindTo(vm, model)
+            .syncAll("basemaps", "selectedId2", "opacity", "baselayer")
+            .enable();
+
+        Binding
+            .create()
+            .bindTo(vm, basemapModel)
+            .syncAll("selectedId")
+            .enable();
+
     }
 
     createInstance() {
         return VueDijit(this.basemapFader);
-    }
-
-    waitForBasemaps(basemaps) {
-        return new Promise(resolve => {
-            basemaps[0].basemap.baseLayers.watch("length", () => {
-                resolve(this);
-            });
-        });
-    }
-
-    addBasemapAsLayer() {
-        let map = this._mapWidgetModel.get("map");
-        if (this.baselayer) {
-            map.remove(this.baselayer)
-        }
-        let id = this.basemapFader.selectedId2;
-        let basemap = this._basemapModel.findItemById(id).basemap;
-        let clone = basemap.clone();
-        clone.load();
-
-        let baselayer2 = this.baselayer = clone.baseLayers.items[0];
-        baselayer2.set("opacity", this.basemapFader.opacity / 100);
-        map.add(baselayer2);
-        map.reorder(baselayer2, 0);
-    }
-
-    adjustOpacity(value) {
-        this.baselayer.opacity = (value / 100);
     }
 
 }

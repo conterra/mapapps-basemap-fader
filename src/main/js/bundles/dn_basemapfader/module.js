@@ -15,3 +15,4 @@
  */
 import ".";
 import "./BasemapFaderWidgetFactory";
+import "./BasemapFaderModel";

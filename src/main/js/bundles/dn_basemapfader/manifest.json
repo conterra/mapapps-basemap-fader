@@ -36,6 +36,22 @@
       },
       "references": [
         {
+          "name": "_basemapFaderModel",
+          "providing": "dn_basemapfader.BasemapFaderModel"
+        },
+        {
+          "name": "_basemapModel",
+          "providing": "map-basemaps-api.BasemapsModel"
+        }
+      ]
+    },
+    {
+      "name": "BasemapFaderModel",
+      "provides": "dn_basemapfader.BasemapFaderModel",
+      "propertiesConstructor": true,
+      "properties": {},
+      "references": [
+        {
           "name": "_mapWidgetModel",
           "providing": "map-widget.MapWidgetModel"
         },
