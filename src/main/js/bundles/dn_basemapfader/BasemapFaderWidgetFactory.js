@@ -43,7 +43,7 @@ class BasemapFaderWidgetFactory {
             Binding //binds Items to each other
                 .create()
                 .bindTo(vm, basemapModel)
-                .syncAll("basemapModel", "selectedBasemap", "basemaps", "selectedId", "selectedBasemap2")
+                .syncAll("basemapModel", "basemaps", "selectedId", "selectedBasemap", "selectedBasemap2")
                 .enable();
         });
     }
