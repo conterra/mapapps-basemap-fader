@@ -20,6 +20,8 @@ import Binding from "apprt-binding/Binding";
 
 class BasemapFaderWidgetFactory {
 
+    // TODO: Add BaseMapFaderModel
+
     activate() {
         let basemapModel = this._basemapModel;
         this._initComponent(basemapModel);
