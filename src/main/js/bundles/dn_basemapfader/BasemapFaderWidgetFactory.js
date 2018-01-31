@@ -21,37 +21,36 @@ import Binding from "apprt-binding/Binding";
 class BasemapFaderWidgetFactory {
 
     activate() {
-        this._initComponent({
-            mapWidgetModel: this._mapWidgetModel,
-            basemapModel: this._basemapModel,
-            properties: this._properties
-        });
+        let basemapModel = this._basemapModel;
+        this._initComponent(basemapModel);
     }
 
-    _initComponent({basemapModel, mapWidgetModel, properties}) {
-        const vm = this.basemapFaderRoleComponent = new Vue(BasemapFaderWidget);
-        vm.basemapModel = basemapModel;
+    _initComponent(basemapModel) {
+        const vm = this.basemapFader = new Vue(BasemapFaderWidget);
         vm.basemaps = basemapModel.basemaps;
         vm.selectedId = basemapModel.selectedId;
-        vm.selectedBasemap2 = basemapModel.basemaps[1].id;
-        vm.map = mapWidgetModel.get("map");
-        vm.layers = vm.map.get("layers");
-        vm.basemapURL = properties.basemapIDs;
+        vm.selectedId2 = basemapModel.basemaps[1].id;
+        vm.opacity = 0;
+
+        vm.$on('addBasemapAsLayer', () => {
+            this.addBasemapAsLayer();
+        });
+        vm.$on('adjustOpacity', (value) => {
+            this.adjustOpacity(value);
+        });
 
         this.waitForBasemaps(vm.basemaps).then(() => {
-            vm.addBasemapAsLayer();
-            Binding //binds Items to each other
+            this.addBasemapAsLayer();
+            Binding
                 .create()
                 .bindTo(vm, basemapModel)
-                .syncAll("basemapModel", "basemaps", "selectedId", "selectedBasemap", "selectedBasemap2")
+                .syncAll("basemaps", "selectedId")
                 .enable();
         });
     }
 
-
     createInstance() {
-        return VueDijit(this.basemapFaderRoleComponent);
-
+        return VueDijit(this.basemapFader);
     }
 
     waitForBasemaps(basemaps) {
@@ -60,6 +59,26 @@ class BasemapFaderWidgetFactory {
                 resolve(this);
             });
         });
+    }
+
+    addBasemapAsLayer() {
+        let map = this._mapWidgetModel.get("map");
+        if (this.baselayer) {
+            map.remove(this.baselayer)
+        }
+        let id = this.basemapFader.selectedId2;
+        let basemap = this._basemapModel.findItemById(id).basemap;
+        let clone = basemap.clone();
+        clone.load();
+
+        let baselayer2 = this.baselayer = clone.baseLayers.items[0];
+        baselayer2.set("opacity", this.basemapFader.opacity / 100);
+        map.add(baselayer2);
+        map.reorder(baselayer2, 0);
+    }
+
+    adjustOpacity(value) {
+        this.baselayer.opacity = (value / 100);
     }
 
 }

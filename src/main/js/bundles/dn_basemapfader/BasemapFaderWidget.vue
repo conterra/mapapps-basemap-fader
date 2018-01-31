@@ -7,26 +7,22 @@
                     <v-layout row wrap>
                         <v-flex xs6>
                             <div class="ml-2 mr-2">
-                                <v-select id="selectedId" v-model="selectedId" v-bind:items="basemaps"
-                                          class="input-group--focused" item-value="id" hide-selected="true"
+                                <v-select v-model="selectedId" v-bind:items="basemaps" item-value="id"
                                           item-text="title">
                                 </v-select>
                             </div>
                         </v-flex>
                         <v-flex xs6>
                             <div class="ml-2 mr-2">
-                                <v-select id="selectedBasemap2" v-model="selectedBasemap2"
-                                          v-bind:items="basemaps"
-                                          class="input-group--focused" item-value="id"
-                                          item-text="title" v-on:input="addBasemapAsLayer">
+                                <v-select v-model="selectedId2" v-bind:items="basemaps" item-value="id"
+                                          item-text="title" v-on:input="$emit('addBasemapAsLayer')">
                                 </v-select>
                             </div>
                         </v-flex>
                         <v-flex xs12>
                             <v-container grid-list-md>
                                 <v-card-text>
-                                    <v-slider class="pt-0" hide-details id="slider" v-model="opacity"
-                                              v-on:input="adjustOpacity"></v-slider>
+                                    <v-slider class="pt-0" hide-details id="slider" v-model="opacity"></v-slider>
                                 </v-card-text>
                             </v-container>
                         </v-flex>
@@ -43,37 +39,17 @@
         mixins: [Bindable],
         data: function () {
             return {
-                map: [],
                 basemaps: [],
-                layers: [],
                 opacity: 0,
                 selectedId: "",
-                selectedBasemap2: "",
-                basemapURL: [],
-                baselayer: {},
+                selectedId2: ""
             };
         },
-        methods: {
-            adjustOpacity: function (value) {
-                let layers = this.layers.items;
-                layers[0].opacity = (slider.__vue__.inputWidth / 100);
-            },
-
-            addBasemapAsLayer: function () {
-                if (this.baselayer.id) {
-                    this.map.remove(this.baselayer)
+        watch: {
+            opacity: {
+                handler(val, oldVal) {
+                    this.$emit('adjustOpacity', val);
                 }
-                let id = this.selectedBasemap2;
-
-                let basemap = this.basemapModel.findItemById(id).basemap;
-                let clone = basemap.clone();
-                clone.load();
-
-                let baselayer2 = this.baselayer = clone.baseLayers.items[0];
-                baselayer2.set("opacity", this.opacity / 100);
-
-                this.map.add(baselayer2);
-                this.map.reorder(baselayer2, 0);
             }
         }
     }
