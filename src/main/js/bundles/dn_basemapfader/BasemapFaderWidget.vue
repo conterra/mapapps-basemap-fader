@@ -22,7 +22,7 @@
                         <v-flex xs12>
                             <v-container grid-list-md>
                                 <v-card-text>
-                                    <v-slider class="pt-0" hide-details id="slider" v-model="opacity"></v-slider>
+                                    <v-slider class="pt-0" hide-details v-model="opacity"></v-slider>
                                 </v-card-text>
                             </v-container>
                         </v-flex>
