@@ -42,7 +42,7 @@ const BasemapFaderModel = declare({
 
     addBasemapAsLayer(layerId) {
         if (!layerId) {
-            return;
+            layerId = this.selectedId2;
         }
         let map = this._mapWidgetModel.get("map");
         if (this.baselayer) {
@@ -59,7 +59,9 @@ const BasemapFaderModel = declare({
     },
 
     adjustOpacity(value) {
-        this.baselayer.opacity = (value / 100);
+        if (this.baselayer) {
+            this.baselayer.opacity = (value / 100);
+        }
     }
 
 });

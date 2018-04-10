@@ -44,7 +44,7 @@ class BasemapFaderWidgetFactory {
         Binding
             .create()
             .bindTo(vm, model)
-            .syncAll("basemaps", "selectedId2", "opacity", "baselayer")
+            .syncAll("selectedId2", "opacity")
             .enable();
 
         Binding

@@ -16,9 +16,6 @@
 module.exports = {
     bundleName: "Basemap Fader",
     bundleDescription: "Der Basemap Fader ist ein neues Widget, welches das überblenden von zwei Grundkarten erm\u00F6glicht.",
-    ui: {
-        title: "Basemap Fader"
-    },
     tool: {
         title: "Basemap Fader",
         tooltip: "Basemap Fader"

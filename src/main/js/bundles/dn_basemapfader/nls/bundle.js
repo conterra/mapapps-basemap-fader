@@ -16,10 +16,7 @@
 module.exports = {
     root: ({
         bundleName: "Basemap Fader",
-        bundleDescription: "The Basemap Fader is a new Widget that allows you to fade two basemaps into each other.",
-        ui: {
-            title: "Basemap Fader"
-        },
+        bundleDescription: "The Basemap Fader is a new widget that allows you to fade two basemaps into each other.",
         tool: {
             title: "Basemap Fader",
             tooltip: "Basemap Fader"

@@ -21,7 +21,49 @@
   "layout-widgets": [
     {
       "widgetRole": "basemapFader",
-      "attachTo": "header_right"
+      "template": "seasons",
+      "sublayout": [
+        "desktop",
+        "tablet_landscape",
+        "tablet_portrait"
+      ],
+      "window": {
+        "autofocus": false,
+        "dockable": true,
+        "dockTool": "basemapFaderToggleTool",
+        "dockingBar": "${id}-dockingBarBottomLeft",
+        "marginBox": {
+          "t": 40,
+          "w": 500,
+          "h": 200,
+          "r": 0
+        },
+        "minimizeOnClose": true,
+        "resizable": false,
+        "windowClass": "noTitleBarAndWindowTools noPadding"
+      }
+    },
+    {
+      "widgetRole": "basemapFader",
+      "template": "seasons",
+      "sublayout": [
+        "mobile_landscape",
+        "mobile_portrait"
+      ],
+      "window": {
+        "autofocus": false,
+        "dockable": true,
+        "dockTool": "basemapFaderToggleTool",
+        "dockingBar": "${id}-dockingBarBottomLeft",
+        "marginBox": {
+          "w": "100%",
+          "h": 200,
+          "t": 0
+        },
+        "minimizeOnClose": true,
+        "resizable": false,
+        "windowClass": "mobileWindow noTitleBarAndWindowTools noPadding"
+      }
     }
   ],
   "components": [
@@ -60,6 +102,25 @@
           "providing": "map-basemaps-api.BasemapsModel"
         }
       ]
+    },
+    {
+      "name": "BasemapFaderToggleTool",
+      "impl": "ct/tools/Tool",
+      "provides": [
+        "ct.tools.Tool"
+      ],
+      "propertiesConstructor": true,
+      "properties": {
+        "id": "basemapFaderToggleTool",
+        "title": "${tool.title}",
+        "tooltip": "${tool.tooltip}",
+        "iconClass": "icon-layer-settings",
+        "toolRole": "toolset",
+        "togglable": true,
+        "rules": {
+          "noGroup": true
+        }
+      }
     }
   ]
 }
