@@ -84,6 +84,11 @@
         {
           "name": "_basemapModel",
           "providing": "map-basemaps-api.BasemapsModel"
+        },
+        {
+          "name": "_tool",
+          "providing": "ct.tools.Tool",
+          "filter": "(id=basemapFaderToggleTool)"
         }
       ]
     },

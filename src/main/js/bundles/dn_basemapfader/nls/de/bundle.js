@@ -19,5 +19,8 @@ module.exports = {
     tool: {
         title: "Basemap Fader",
         tooltip: "Basemap Fader"
+    },
+    ui: {
+        close: "Schließen"
     }
 };

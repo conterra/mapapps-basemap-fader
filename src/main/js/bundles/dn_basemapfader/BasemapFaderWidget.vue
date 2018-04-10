@@ -4,14 +4,14 @@
             <v-flex xs6>
                 <v-container grid-list-md>
                     <v-select v-model="selectedId" v-bind:items="basemaps" item-value="id"
-                              item-text="title">
+                              item-text="title" hide-details>
                     </v-select>
                 </v-container>
             </v-flex>
             <v-flex xs6>
                 <v-container grid-list-md>
                     <v-select v-model="selectedId2" v-bind:items="basemaps" item-value="id"
-                              item-text="title" @input="$emit('addBasemapAsLayer', $event)">
+                              item-text="title" hide-details @input="$emit('addBasemapAsLayer', $event)">
                     </v-select>
                 </v-container>
             </v-flex>
@@ -19,6 +19,14 @@
                 <v-container grid-list-md>
                     <v-slider class="pt-0" hide-details v-model="opacity"></v-slider>
                 </v-container>
+            </v-flex>
+            <v-flex xs12>
+                <v-btn block
+                       color="primary"
+                       @click.native="close">
+                    <v-icon left>clear</v-icon>
+                    {{i18n.close}}
+                </v-btn>
             </v-flex>
         </v-layout>
     </v-container>
@@ -42,6 +50,11 @@
                 handler(val, oldVal) {
                     this.$emit('adjustOpacity', val);
                 }
+            }
+        },
+        methods: {
+            close: function () {
+                this.$emit('close', {});
             }
         }
     }
