@@ -7,7 +7,7 @@ Sample App
 ------------------
 https://demos.conterra.de/mapapps/resources/apps/downloads_basemapfader4/index.html
 
-![Screenshot Sample App Basemap Fader](https://github.com/conterra/mapapps-basemap-fader/blob/master/basemapfader_screenshot.png)
+![Screenshot Sample App Basemap Fader](https://github.com/conterra/mapapps-basemap-fader/blob/master/screenshot.png)
 
 Installation Guide
 ------------------
