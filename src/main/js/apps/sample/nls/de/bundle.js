@@ -16,7 +16,7 @@
 module.exports = {
     apptitle: "Basemap Fader Sample",
     custominfo: {
-        content: "Diese App zeigt das Basemap Fader Bundle, welches es erm\u00F6glicht, zwei Grundkarten ineinander zu schmelzen. Um die Funktinoalität auszuprobieren, klicken Sie auf den Knopf in der rechtsobenen Ecke"
+        content: "Diese App zeigt das Basemap Fader Bundle, welches es erm\u00F6glicht, zwei Grundkarten zu \u00fcberblenden. Um die Funktinoalit\u00e4t auszuprobieren, klicken Sie auf den Knopf in der rechtsobenen Ecke"
     },
     map: {
         basemaps: {
@@ -24,8 +24,8 @@ module.exports = {
             topo: "Topographische Karte",
             satellite: "Luftbild"
         },
-        basemaps1: "Wählen Sie eine Grundkarte",
-        basemap2: "Wählen Sie eine andere Grundkarte",
+        basemaps1: "W\u00e4hlen Sie eine Grundkarte",
+        basemap2: "W\u00e4hlen Sie eine andere Grundkarte",
         close: "Schließen"
     },
     search: {
