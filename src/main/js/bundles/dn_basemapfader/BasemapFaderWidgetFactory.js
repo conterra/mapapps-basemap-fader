@@ -29,6 +29,7 @@ class BasemapFaderWidgetFactory {
         let model = this._basemapFaderModel;
         const vm = this.basemapFader = new Vue(BasemapFaderWidget);
         vm.basemaps = model.basemaps;
+        basemapModel.selectedId = vm.basemaps[0].id;
         vm.selectedId = basemapModel.selectedId;
         vm.selectedId2 = model.selectedId2;
         vm.opacity = model.opacity;

@@ -53,12 +53,20 @@ const BasemapFaderModel = declare({
         clone.load();
 
         let baselayer2 = this.baselayer = clone.baseLayers.items[0];
-        baselayer2.set("opacity", this.opacity / 100);
+        if(this.baselayer.id !=  map.basemap.baseLayers.items[0].id){
+            baselayer2.set("opacity", this.opacity / 100);
+        }
+
         map.add(baselayer2);
         map.reorder(baselayer2, 0);
+        map.basemap.baseLayers.items[0].opacity = 1;
     },
 
     adjustOpacity(value) {
+        if(this.baselayer.id ===  this._mapWidgetModel.get("map").basemap.baseLayers.items[0].id){
+            this.baselayer.opacity = 1;
+            return;
+        }
         if (this.baselayer) {
             this.baselayer.opacity = (value / 100);
         }
