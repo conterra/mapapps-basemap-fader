@@ -29,24 +29,20 @@ const BasemapFaderModel = declare({
 
         this.waitForBasemaps(basemaps).then(() => {
             this.addBasemapAsLayer();
-    })
+        })
         ;
     },
 
     waitForBasemaps(basemaps) {
 
         return new Promise(resolve => {
-            if(basemaps[0].basemap.baseLayers.items.length > 0){
-            resolve(this);
-        }
-        basemaps[0].basemap.baseLayers.watch("length", () = > {
-            resolve(this
-    )
-        ;
-    })
-        ;
-    })
-        ;
+            if (basemaps[0].basemap.baseLayers.items.length > 0) {
+                resolve(this);
+            }
+            basemaps[0].basemap.baseLayers.watch("length", () => {
+                resolve(this);
+            });
+        });
     },
 
     addBasemapAsLayer(layerId) {
