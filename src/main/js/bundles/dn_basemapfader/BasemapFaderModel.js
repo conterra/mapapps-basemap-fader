@@ -29,15 +29,24 @@ const BasemapFaderModel = declare({
 
         this.waitForBasemaps(basemaps).then(() => {
             this.addBasemapAsLayer();
-        });
+    })
+        ;
     },
 
     waitForBasemaps(basemaps) {
+
         return new Promise(resolve => {
-            basemaps[0].basemap.baseLayers.watch("length", () => {
-                resolve(this);
-            });
-        });
+            if(basemaps[0].basemap.baseLayers.items.length > 0){
+            resolve(this);
+        }
+        basemaps[0].basemap.baseLayers.watch("length", () = > {
+            resolve(this
+    )
+        ;
+    })
+        ;
+    })
+        ;
     },
 
     addBasemapAsLayer(layerId) {
@@ -53,7 +62,7 @@ const BasemapFaderModel = declare({
         clone.load();
 
         let baselayer2 = this.baselayer = clone.baseLayers.items[0];
-        if(this.baselayer.id !=  map.basemap.baseLayers.items[0].id){
+        if (this.baselayer.id != map.basemap.baseLayers.items[0].id) {
             baselayer2.set("opacity", this.opacity / 100);
         }
 
@@ -63,7 +72,7 @@ const BasemapFaderModel = declare({
     },
 
     adjustOpacity(value) {
-        if(this.baselayer.id ===  this._mapWidgetModel.get("map").basemap.baseLayers.items[0].id){
+        if (this.baselayer.id === this._mapWidgetModel.get("map").basemap.baseLayers.items[0].id) {
             this.baselayer.opacity = 1;
             return;
         }
