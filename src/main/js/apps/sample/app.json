@@ -75,6 +75,74 @@
     "map-init": {
       "Config": {
         "basemaps": [
+
+            {
+                "id": "luftbildernrw",
+                "listMode": "hide",
+                "title": "Luftbilder NRW",
+                "visible": true,
+                "selected": true,
+                "description": "Orthophotos, Bodenauflösung von 10cm/Pixel.",
+                "basemap": {
+                    "url": "https://www.wms.nrw.de/geobasis/wms_nw_dop",
+                    "type": "WMS",
+                    "copyright": "© GEObasis.NRW / Bezirksregierung Köln 2018",
+                    "version": "1.3.0",
+                    "queryable": true,
+                    "format": "image/png32",
+                    "sublayers": [
+                        {
+                            "name": "nw_dop_rgb"
+                        }
+                    ]
+                },
+                "thumbnailUrl": "resource('${app}:luftbild.png')"
+            },
+            {
+                "id": "luftbildernrwgrau",
+                "listMode": "hide",
+                "title": "Luftbilder NRW Grau",
+                "visible": true,
+                "description": "Orthophotos, Bodenauflösung von 10cm/Pixel.",
+                "basemap": {
+                    "url": "https://www.wms.nrw.de/geobasis/wms_nw_dop",
+                    "type": "WMS",
+                    "copyright": "© GEObasis.NRW / Bezirksregierung Köln 2018",
+                    "version": "1.3.0",
+                    "queryable": false,
+                    "format": "image/png32",
+                    "sublayers": [
+                        {
+                            "name": "nw_dop_nir"
+                        }
+                    ]
+                },
+                "thumbnailUrl": "resource('${app}:luftbild_grau.png')"
+            },
+            {
+                "id": "alkisnrwgrau",
+                "listMode": "hide",
+                "title": "ALKIS NRW Grau",
+                "visible": true,
+                "description": "Gebäude, Bauwerke und Einrichtungen, Flurstücke.",
+                "basemap": {
+                    "url": "https://www.wms.nrw.de/geobasis/wms_nw_alkis_grau",
+                    "type": "WMS",
+                    "copyright": "© GEObasis.NRW / Bezirksregierung Köln 2018",
+                    "version": "1.3.0",
+                    "queryable": false,
+                    "format": "image/png32",
+                    "sublayers": [
+                        {
+                            "name": "adv_alkis_gebaeude"
+                        },
+                        {
+                            "name": "adv_alkis_flurstuecke"
+                        }
+                    ]
+                },
+                "thumbnailUrl": "resource('${app}:alkisnrwgrau.png')"
+            },
           {
             "id": "topo",
             "title": "${map.basemaps.topo}",

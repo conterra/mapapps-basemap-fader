@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 con terra GmbH (info@conterra.de)
+ * Copyright (C) 2019 con terra GmbH (info@conterra.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,7 @@ const BasemapFaderModel = declare({
     waitForBasemaps(basemaps) {
 
         return new Promise(resolve => {
-            if (basemaps[0].basemap.baseLayers.items.length > 0) {
+            if( basemaps[0].basemap.baseLayers.items.length > 0){
                 resolve(this);
             }
             basemaps[0].basemap.baseLayers.watch("length", () => {

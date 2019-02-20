@@ -1,22 +1,22 @@
 <template>
-    <v-container grid-list-md>
+    <v-container grid-list-md class="pa-1">
         <v-layout row wrap>
             <v-flex xs6>
-                <v-container grid-list-md>
+                <v-container grid-list-md class="pa-1">
                     <v-select v-model="selectedId" v-bind:items="basemaps" item-value="id"
                               item-text="title" hide-details>
                     </v-select>
                 </v-container>
             </v-flex>
             <v-flex xs6>
-                <v-container grid-list-md>
+                <v-container grid-list-md class="pa-1">
                     <v-select v-model="selectedId2" v-bind:items="basemaps" item-value="id"
                               item-text="title" hide-details @input="$emit('addBasemapAsLayer', $event)">
                     </v-select>
                 </v-container>
             </v-flex>
             <v-flex xs12>
-                <v-container grid-list-md>
+                <v-container grid-list-md class="pa-1">
                     <v-slider class="pt-0" hide-details v-model="opacity"></v-slider>
                 </v-container>
             </v-flex>
