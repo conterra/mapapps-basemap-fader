@@ -16,7 +16,7 @@
 module.exports = {
     apptitle: "Basemap Fader Sample",
     custominfo: {
-        content: "Diese App zeigt das Basemap Fader Bundle, welches es erm\u00F6glicht, zwei Grundkarten zu \u00fcberblenden. Um die Funktinoalit\u00e4t auszuprobieren, klicken Sie auf den Knopf in der rechtsobenen Ecke"
+        content: "Diese App zeigt das Basemap Fader Bundle, welches es erm\u00F6glicht, zwei Grundkarten zu \u00fcberblenden. Um die Funktionalit\u00e4t auszuprobieren, klicken Sie auf den Knopf in der unteren rechten Ecke"
     },
     map: {
         basemaps: {
