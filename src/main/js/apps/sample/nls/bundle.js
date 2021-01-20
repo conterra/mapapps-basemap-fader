@@ -17,7 +17,7 @@ module.exports = {
     root: {
         apptitle: "Basemap Fader Sample",
         custominfo: {
-            content: "This app shows the functionality of the Basmeap Fader Bundle which allows you to fade two basemaps into each other. Please click on the button in the bottom right corner to see how it works"
+            content: "This app shows the functionality of the Basmeap Fader Bundle which allows you to fade two basemaps into each other. Please click on the button in the bottom right corner to see how it works."
         },
         map: {
             basemaps: {
