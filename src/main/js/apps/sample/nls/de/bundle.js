@@ -22,7 +22,8 @@ module.exports = {
         basemaps: {
             streets: "Stra\u00DFenkarte",
             topo: "Topographische Karte",
-            satellite: "Luftbild"
+            satellite: "Satellitenbilder",
+            gray: "Grau stilisiert"
         },
         basemaps1: "W\u00e4hlen Sie eine Grundkarte",
         basemap2: "W\u00e4hlen Sie eine andere Grundkarte",
