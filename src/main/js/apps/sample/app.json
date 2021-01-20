@@ -120,51 +120,58 @@
                 },
                 "thumbnailUrl": "resource('${app}:luftbild_grau.png')"
             },
+            // {
+            //     "id": "alkisnrwgrau",
+            //     "listMode": "hide",
+            //     "title": "ALKIS NRW Grau",
+            //     "visible": true,
+            //     "description": "Gebäude, Bauwerke und Einrichtungen, Flurstücke.",
+            //     "basemap": {
+            //         "url": "https://www.wms.nrw.de/geobasis/wms_nw_alkis_grau",
+            //         "type": "WMS",
+            //         "copyright": "© GEObasis.NRW / Bezirksregierung Köln 2018",
+            //         "version": "1.3.0",
+            //         "queryable": false,
+            //         "format": "image/png32",
+            //         "sublayers": [
+            //             {
+            //                 "name": "adv_alkis_gebaeude"
+            //             },
+            //             {
+            //                 "name": "adv_alkis_flurstuecke"
+            //             }
+            //         ]
+            //     },
+            //     "thumbnailUrl": "resource('${app}:alkisnrwgrau.png')"
+            // },
+
             {
-                "id": "alkisnrwgrau",
-                "listMode": "hide",
-                "title": "ALKIS NRW Grau",
-                "visible": true,
-                "description": "Gebäude, Bauwerke und Einrichtungen, Flurstücke.",
-                "basemap": {
-                    "url": "https://www.wms.nrw.de/geobasis/wms_nw_alkis_grau",
-                    "type": "WMS",
-                    "copyright": "© GEObasis.NRW / Bezirksregierung Köln 2018",
-                    "version": "1.3.0",
-                    "queryable": false,
-                    "format": "image/png32",
-                    "sublayers": [
-                        {
-                            "name": "adv_alkis_gebaeude"
-                        },
-                        {
-                            "name": "adv_alkis_flurstuecke"
-                        }
-                    ]
-                },
-                "thumbnailUrl": "resource('${app}:alkisnrwgrau.png')"
+                "id": "topo",
+                "title": "${map.basemaps.topo}",
+                "basemap" :{
+                  "type": "AGS_TILED",
+                  "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
+                }
+            },
+            {
+                "id": "satellite",
+                "title": "${map.basemaps.satellite}",
+                "basemap" :{
+                  "type": "AGS_TILED",
+                  "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"
+                }
+            },
+            {
+                "id": "streets",
+                "title": "${map.basemaps.streets}",
+                "basemap" :{
+                  "type": "AGS_TILED",
+                  "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"
+                }
             },
           {
-            "id": "topo",
-            "title": "${map.basemaps.topo}",
-            "basemap": "topo",
-            "icon": "filter_hdr",
-            "opacity": 0.5
-          },
-          {
-            "id": "satellite",
-            "title": "${map.basemaps.satellite}",
-            "basemap": "satellite",
-            "icon": "photo_camera"
-          },
-          {
-            "id": "streets",
-            "title": "${map.basemaps.streets}",
-            "basemap": "streets"
-          },
-          {
             "id": "custom_gray",
-            "title": "Gray",
+            "title": "${map.basemaps.gray}",
             "description": "This basemap uses a custom layer",
             "basemap" :{
               "type": "AGS_TILED",
