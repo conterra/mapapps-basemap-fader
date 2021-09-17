@@ -1,10 +1,6 @@
 # Basemap Fader Bundle
 This bundle provides a widget to fade from one baselayer to another baselayer.
 
-Sample App
-------------------
-https://demos.conterra.de/mapapps/resources/apps/downloads_basemapfader/index.html
-
 ![Screenshot Sample App Basemap Fader](https://github.com/conterra/mapapps-basemap-fader/blob/3.x/basemapFader.JPG)
 
 Installation Guide
