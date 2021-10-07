@@ -16,3 +16,4 @@
 import ".";
 import "./BasemapFaderWidgetFactory";
 import "./BasemapFaderModel";
+import "ct/tools/Tool";
