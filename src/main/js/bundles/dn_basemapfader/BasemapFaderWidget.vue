@@ -35,8 +35,7 @@
                         item-value="id"
                         item-text="title"
                         hide-details
-                    >
-                    </v-select>
+                    />
                 </v-container>
             </v-flex>
             <v-flex xs6>
