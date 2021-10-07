@@ -24,7 +24,7 @@ export default declare({
 
     $watch: {
         "selectedId2"(val) {
-            this.addBasemapAsLayer(val);
+            this.addBasemapAsLayer();
         },
         "opacity"(val) {
             this.adjustOpacity(val);
@@ -56,26 +56,28 @@ export default declare({
         this.selectedId2 = this.basemaps2[0].id;
     },
 
-    addBasemapAsLayer(layerId) {
-        if (!layerId) {
-            layerId = this.selectedId2;
-        }
+    addBasemapAsLayer() {
+        const basemapModel = this._basemapModel;
+        const selectedId = basemapModel.selectedId;
+        const selectedId2 = this.selectedId2;
+
         const map = this._mapWidgetModel.get("map");
         if (this.baselayer) {
             map.remove(this.baselayer);
         }
-        const basemap = this._basemapModel.findItemById(layerId).basemap;
-        const clone = basemap.clone();
+        const basemap2 = this._basemapModel.findItemById(selectedId2).basemap;
+        const clone = basemap2.clone();
         clone.load();
 
         const baselayer2 = this.baselayer = clone.baseLayers.items[0];
-        if (this.baselayer.id !== map.basemap.baseLayers.items[0].id) {
-            baselayer2.set("opacity", this.opacity / 100);
-        }
+        baselayer2.listMode = "hide";
+        baselayer2.set("opacity", this.opacity / 100);
 
         map.add(baselayer2);
         map.reorder(baselayer2, 0);
-        map.basemap.baseLayers.items[0].opacity = 1;
+
+        const basemap = this._basemapModel.findItemById(selectedId).basemap;
+        basemap.baseLayers.items[0].opacity = (100 - this.opacity) / 100;
     },
 
     adjustOpacity(value) {
@@ -86,6 +88,11 @@ export default declare({
         if (this.baselayer) {
             this.baselayer.opacity = (value / 100);
         }
+
+        const basemapModel = this._basemapModel;
+        const selectedId = basemapModel.selectedId;
+        const basemap = this._basemapModel.findItemById(selectedId).basemap;
+        basemap.baseLayers.items[0].opacity = (100 - value) / 100;
     }
 
 });
