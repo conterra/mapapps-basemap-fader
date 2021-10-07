@@ -45,7 +45,7 @@
                 >
                     <v-select
                         v-model="selectedId2"
-                        :items="basemaps"
+                        :items="basemaps2"
                         item-value="id"
                         item-text="title"
                         hide-details
@@ -87,6 +87,7 @@
         data: function () {
             return {
                 basemaps: [],
+                basemaps2: [],
                 opacity: 0,
                 selectedId: "",
                 selectedId2: ""

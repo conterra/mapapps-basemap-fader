@@ -18,7 +18,7 @@ import {declare} from "apprt-core/Mutable";
 export default declare({
 
     opacity: 0,
-    basemaps: [],
+    basemaps2: [],
     selectedId2: null,
     baselayer: null,
 
@@ -39,6 +39,25 @@ export default declare({
         this.waitForBasemaps(basemaps).then(() => {
             this.addBasemapAsLayer();
         });
+
+        this._changeBasemap2(basemaps, basemapModel.selectedId);
+
+        basemapModel.watch("selectedId", ({value}) => {
+            this._changeBasemap2(basemaps, value);
+        });
+
+        basemapModel.watch("basemaps", (basemaps) => {
+            this._changeBasemap2(basemaps, basemapModel.selectedId);
+        });
+    },
+
+    _changeBasemap2(basemaps, selectedId) {
+        this.basemaps2 = basemaps.filter((basemap) => {
+            if (basemap.id !== selectedId) {
+                return true;
+            }
+        });
+        this.selectedId2 = this.basemaps2[0].id;
     },
 
     waitForBasemaps(basemaps) {

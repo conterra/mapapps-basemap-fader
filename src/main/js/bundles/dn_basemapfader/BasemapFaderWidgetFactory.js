@@ -56,6 +56,7 @@ export default class BasemapFaderWidgetFactory {
         this.#basemapFaderModelBinding = Binding.for(vm, basemapFaderModel)
             .sync("selectedId2")
             .syncToRight("opacity")
+            .syncToLeft("basemaps2")
             .enable()
             .syncToLeftNow();
 
