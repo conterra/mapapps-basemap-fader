@@ -69,7 +69,7 @@
                 <v-btn
                     block
                     color="primary"
-                    @click.native="close"
+                    @click="$emit('close')"
                 >
                     <v-icon left>
                         clear
@@ -95,15 +95,8 @@
             };
         },
         watch: {
-            opacity: {
-                handler(val) {
-                    this.$emit('adjust-opacity', val);
-                }
-            }
-        },
-        methods: {
-            close: function () {
-                this.$emit('close', {});
+            opacity: function (value) {
+                this.$emit('adjust-opacity', value);
             }
         }
     }
