@@ -36,10 +36,10 @@ class BasemapFaderWidgetFactory {
         vm.baselayer = model.baselayer;
         vm.i18n = this._i18n.get().ui;
 
-        vm.$on('addBasemapAsLayer', (layerId) => {
+        vm.$on('add-basemap-as-layer', (layerId) => {
             model.addBasemapAsLayer(layerId);
         });
-        vm.$on('adjustOpacity', (value) => {
+        vm.$on('adjust-opacity', (value) => {
             model.adjustOpacity(value);
         });
         vm.$on('close', () => this._tool.set("active", false));

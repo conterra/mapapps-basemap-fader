@@ -49,7 +49,7 @@
                         item-value="id"
                         item-text="title"
                         hide-details
-                        @input="$emit('addBasemapAsLayer', $event)"
+                        @input="$emit('add-basemap-as-layer', $event)"
                     />
                 </v-container>
             </v-flex>
@@ -97,7 +97,7 @@
         watch: {
             opacity: {
                 handler(val) {
-                    this.$emit('adjustOpacity', val);
+                    this.$emit('adjust-opacity', val);
                 }
             }
         },
