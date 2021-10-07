@@ -36,10 +36,6 @@ export default declare({
         const basemaps = this.basemaps = basemapModel.basemaps;
         this.selectedId2 = basemapModel.basemaps[1].id;
 
-        this.waitForBasemaps(basemaps).then(() => {
-            this.addBasemapAsLayer();
-        });
-
         this._changeBasemap2(basemaps, basemapModel.selectedId);
 
         basemapModel.watch("selectedId", ({value}) => {
@@ -58,17 +54,6 @@ export default declare({
             }
         });
         this.selectedId2 = this.basemaps2[0].id;
-    },
-
-    waitForBasemaps(basemaps) {
-        return new Promise(resolve => {
-            if (basemaps[0].basemap.baseLayers.items.length > 0) {
-                resolve(this);
-            }
-            basemaps[0].basemap.baseLayers.watch("length", () => {
-                resolve(this);
-            });
-        });
     },
 
     addBasemapAsLayer(layerId) {
