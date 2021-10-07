@@ -23,8 +23,8 @@ const BasemapFaderModel = declare({
     baselayer: null,
 
     activate() {
-        let basemapModel = this._basemapModel;
-        let basemaps = this.basemaps = basemapModel.basemaps;
+        const basemapModel = this._basemapModel;
+        const basemaps = this.basemaps = basemapModel.basemaps;
         this.selectedId2 = basemapModel.basemaps[1].id;
 
         this.waitForBasemaps(basemaps).then(() => {
@@ -49,16 +49,16 @@ const BasemapFaderModel = declare({
         if (!layerId) {
             layerId = this.selectedId2;
         }
-        let map = this._mapWidgetModel.get("map");
+        const map = this._mapWidgetModel.get("map");
         if (this.baselayer) {
             map.remove(this.baselayer);
         }
-        let basemap = this._basemapModel.findItemById(layerId).basemap;
-        let clone = basemap.clone();
+        const basemap = this._basemapModel.findItemById(layerId).basemap;
+        const clone = basemap.clone();
         clone.load();
 
-        let baselayer2 = this.baselayer = clone.baseLayers.items[0];
-        if (this.baselayer.id != map.basemap.baseLayers.items[0].id) {
+        const baselayer2 = this.baselayer = clone.baseLayers.items[0];
+        if (this.baselayer.id !== map.basemap.baseLayers.items[0].id) {
             baselayer2.set("opacity", this.opacity / 100);
         }
 

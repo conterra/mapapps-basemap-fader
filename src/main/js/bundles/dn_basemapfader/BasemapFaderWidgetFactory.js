@@ -25,8 +25,8 @@ class BasemapFaderWidgetFactory {
     }
 
     _initComponent() {
-        let basemapModel = this._basemapModel;
-        let model = this._basemapFaderModel;
+        const basemapModel = this._basemapModel;
+        const model = this._basemapFaderModel;
         const vm = this.basemapFader = new Vue(BasemapFaderWidget);
         vm.basemaps = model.basemaps;
         basemapModel.selectedId = vm.basemaps[0].id;

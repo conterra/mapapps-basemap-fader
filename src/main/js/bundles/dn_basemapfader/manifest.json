@@ -1,129 +1,129 @@
 {
-  "name": "dn_basemapfader",
-  "version": "2.1.4-SNAPSHOT",
-  "title": "${bundleName}",
-  "description": "${bundleDescription}",
-  "vendor": "con terra GmbH",
-  "productName": "devnet-mapapps-basemapfader",
-  "dependencies": {
-    "apprt-vue": "^4.3.0",
-    "apprt-binding": "^4.3.0",
-    "apprt-vuetify": "^4.3.0"
-  },
-  "CSS-Themes-Extension": [
-    {
-      "name": "*",
-      "files": [
-        "./css/styles.css"
-      ]
-    }
-  ],
-  "layout-widgets": [
-    {
-      "widgetRole": "basemapFader",
-      "sublayout": [
-        "desktop",
-        "tablet_landscape",
-        "tablet_portrait"
-      ],
-      "window": {
-        "autofocus": false,
-        "dockable": true,
-        "dockTool": "basemapFaderToggleTool",
-        "dockingBar": "${id}-dockingBarBottomLeft",
-        "marginBox": {
-          "t": 40,
-          "w": 500,
-          "h": 215,
-          "r": 0
-        },
-        "minimizeOnClose": true,
-        "resizable": false,
-        "windowClass": "noTitleBarAndWindowTools"
-      }
+    "name": "dn_basemapfader",
+    "version": "2.1.4-SNAPSHOT",
+    "title": "${bundleName}",
+    "description": "${bundleDescription}",
+    "vendor": "con terra GmbH",
+    "productName": "devnet-mapapps-basemapfader",
+    "dependencies": {
+        "apprt-vue": "^4.3.0",
+        "apprt-binding": "^4.3.0",
+        "apprt-vuetify": "^4.3.0"
     },
-    {
-      "widgetRole": "basemapFader",
-      "sublayout": [
-        "mobile_landscape",
-        "mobile_portrait"
-      ],
-      "window": {
-        "autofocus": false,
-        "dockable": true,
-        "dockTool": "basemapFaderToggleTool",
-        "dockingBar": "${id}-dockingBarBottomLeft",
-        "marginBox": {
-          "w": "100%",
-          "h": 215,
-          "t": 0
-        },
-        "minimizeOnClose": true,
-        "resizable": false,
-        "windowClass": "mobileWindow noTitleBarAndWindowTools"
-      }
-    }
-  ],
-  "components": [
-    {
-      "name": "BasemapFaderWidgetFactory",
-      "provides": [
-        "dijit.Widget"
-      ],
-      "instanceFactory": true,
-      "properties": {
-        "widgetRole": "basemapFader"
-      },
-      "references": [
+    "CSS-Themes-Extension": [
         {
-          "name": "_basemapFaderModel",
-          "providing": "dn_basemapfader.BasemapFaderModel"
-        },
-        {
-          "name": "_basemapModel",
-          "providing": "map-basemaps-api.BasemapsModel"
-        },
-        {
-          "name": "_tool",
-          "providing": "ct.tools.Tool",
-          "filter": "(id=basemapFaderToggleTool)"
+            "name": "*",
+            "files": [
+                "./css/styles.css"
+            ]
         }
-      ]
-    },
-    {
-      "name": "BasemapFaderModel",
-      "provides": "dn_basemapfader.BasemapFaderModel",
-      "propertiesConstructor": true,
-      "properties": {},
-      "references": [
+    ],
+    "layout-widgets": [
         {
-          "name": "_mapWidgetModel",
-          "providing": "map-widget.MapWidgetModel"
+            "widgetRole": "basemapFader",
+            "sublayout": [
+                "desktop",
+                "tablet_landscape",
+                "tablet_portrait"
+            ],
+            "window": {
+                "autofocus": false,
+                "dockable": true,
+                "dockTool": "basemapFaderToggleTool",
+                "dockingBar": "${id}-dockingBarBottomLeft",
+                "marginBox": {
+                    "t": 40,
+                    "w": 500,
+                    "h": 215,
+                    "r": 0
+                },
+                "minimizeOnClose": true,
+                "resizable": false,
+                "windowClass": "noTitleBarAndWindowTools"
+            }
         },
         {
-          "name": "_basemapModel",
-          "providing": "map-basemaps-api.BasemapsModel"
+            "widgetRole": "basemapFader",
+            "sublayout": [
+                "mobile_landscape",
+                "mobile_portrait"
+            ],
+            "window": {
+                "autofocus": false,
+                "dockable": true,
+                "dockTool": "basemapFaderToggleTool",
+                "dockingBar": "${id}-dockingBarBottomLeft",
+                "marginBox": {
+                    "w": "100%",
+                    "h": 215,
+                    "t": 0
+                },
+                "minimizeOnClose": true,
+                "resizable": false,
+                "windowClass": "mobileWindow noTitleBarAndWindowTools"
+            }
         }
-      ]
-    },
-    {
-      "name": "BasemapFaderToggleTool",
-      "impl": "ct/tools/Tool",
-      "provides": [
-        "ct.tools.Tool"
-      ],
-      "propertiesConstructor": true,
-      "properties": {
-        "id": "basemapFaderToggleTool",
-        "title": "${tool.title}",
-        "tooltip": "${tool.tooltip}",
-        "iconClass": "icon-layer-settings",
-        "toolRole": "toolset",
-        "togglable": true,
-        "rules": {
-          "noGroup": true
+    ],
+    "components": [
+        {
+            "name": "BasemapFaderWidgetFactory",
+            "provides": [
+                "dijit.Widget"
+            ],
+            "instanceFactory": true,
+            "properties": {
+                "widgetRole": "basemapFader"
+            },
+            "references": [
+                {
+                    "name": "_basemapFaderModel",
+                    "providing": "dn_basemapfader.BasemapFaderModel"
+                },
+                {
+                    "name": "_basemapModel",
+                    "providing": "map-basemaps-api.BasemapsModel"
+                },
+                {
+                    "name": "_tool",
+                    "providing": "ct.tools.Tool",
+                    "filter": "(id=basemapFaderToggleTool)"
+                }
+            ]
+        },
+        {
+            "name": "BasemapFaderModel",
+            "provides": "dn_basemapfader.BasemapFaderModel",
+            "propertiesConstructor": true,
+            "properties": {},
+            "references": [
+                {
+                    "name": "_mapWidgetModel",
+                    "providing": "map-widget.MapWidgetModel"
+                },
+                {
+                    "name": "_basemapModel",
+                    "providing": "map-basemaps-api.BasemapsModel"
+                }
+            ]
+        },
+        {
+            "name": "BasemapFaderToggleTool",
+            "impl": "ct/tools/Tool",
+            "provides": [
+                "ct.tools.Tool"
+            ],
+            "propertiesConstructor": true,
+            "properties": {
+                "id": "basemapFaderToggleTool",
+                "title": "${tool.title}",
+                "tooltip": "${tool.tooltip}",
+                "iconClass": "icon-layer-settings",
+                "toolRole": "toolset",
+                "togglable": true,
+                "rules": {
+                    "noGroup": true
+                }
+            }
         }
-      }
-    }
-  ]
+    ]
 }
