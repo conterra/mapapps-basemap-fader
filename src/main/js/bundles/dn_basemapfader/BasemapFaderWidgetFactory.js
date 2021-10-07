@@ -18,10 +18,20 @@ import Vue from "apprt-vue/Vue";
 import VueDijit from "apprt-vue/VueDijit";
 import Binding from "apprt-binding/Binding";
 
-class BasemapFaderWidgetFactory {
+export default class BasemapFaderWidgetFactory {
+
+    #basemapModelBinding = undefined;
+    #basemapFaderModelBinding = undefined;
 
     activate() {
         this._initComponent();
+    }
+
+    deactivate() {
+        this.#basemapModelBinding.unbind();
+        this.#basemapModelBinding = undefined;
+        this.#basemapFaderModelBinding.unbind();
+        this.#basemapFaderModelBinding = undefined;
     }
 
     _initComponent() {
@@ -29,11 +39,6 @@ class BasemapFaderWidgetFactory {
         const model = this._basemapFaderModel;
         const vm = this.basemapFader = new Vue(BasemapFaderWidget);
         vm.basemaps = model.basemaps;
-        basemapModel.selectedId = vm.basemaps[0].id;
-        vm.selectedId = basemapModel.selectedId;
-        vm.selectedId2 = model.selectedId2;
-        vm.opacity = model.opacity;
-        vm.baselayer = model.baselayer;
         vm.i18n = this._i18n.get().ui;
 
         vm.$on('add-basemap-as-layer', (layerId) => {
@@ -44,17 +49,21 @@ class BasemapFaderWidgetFactory {
         });
         vm.$on('close', () => this._tool.set("active", false));
 
-        Binding
-            .create()
-            .bindTo(vm, model)
-            .syncAll("selectedId2", "opacity")
-            .enable();
-
-        Binding
-            .create()
-            .bindTo(vm, basemapModel)
+        this.#basemapModelBinding = Binding.for(vm, basemapModel)
             .syncAll("selectedId")
-            .enable();
+            .syncToLeft("basemaps", (basemaps) => basemaps.map((basemap) => {
+                return {
+                    id: basemap.id,
+                    title: basemap.title
+                }
+            }))
+            .enable()
+            .syncToLeftNow();
+
+        this.#basemapFaderModelBinding = Binding.for(vm, model)
+            .syncAll("selectedId2", "opacity")
+            .enable()
+            .syncToLeftNow();
 
     }
 
@@ -63,6 +72,3 @@ class BasemapFaderWidgetFactory {
     }
 
 }
-
-
-module.exports = BasemapFaderWidgetFactory;
