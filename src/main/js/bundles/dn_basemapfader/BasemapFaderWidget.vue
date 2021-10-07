@@ -49,7 +49,6 @@
                         item-value="id"
                         item-text="title"
                         hide-details
-                        @input="$emit('add-basemap-as-layer', $event)"
                     />
                 </v-container>
             </v-flex>
@@ -87,17 +86,11 @@
         mixins: [Bindable],
         data: function () {
             return {
-                showMenu: false,
                 basemaps: [],
                 opacity: 0,
                 selectedId: "",
                 selectedId2: ""
             };
-        },
-        watch: {
-            opacity: function (value) {
-                this.$emit('adjust-opacity', value);
-            }
         }
     }
 </script>

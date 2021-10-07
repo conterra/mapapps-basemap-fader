@@ -38,19 +38,12 @@ export default class BasemapFaderWidgetFactory {
         const basemapModel = this._basemapModel;
         const basemapFaderModel = this._basemapFaderModel;
         const vm = this.basemapFader = new Vue(BasemapFaderWidget);
-        vm.basemaps = basemapFaderModel.basemaps;
         vm.i18n = this._i18n.get().ui;
 
-        vm.$on('add-basemap-as-layer', (layerId) => {
-            basemapFaderModel.addBasemapAsLayer(layerId);
-        });
-        vm.$on('adjust-opacity', (value) => {
-            basemapFaderModel.adjustOpacity(value);
-        });
         vm.$on('close', () => this._tool.set("active", false));
 
         this.#basemapModelBinding = Binding.for(vm, basemapModel)
-            .syncAll("selectedId")
+            .sync("selectedId")
             .syncToLeft("basemaps", (basemaps) => basemaps.map((basemap) => {
                 return {
                     id: basemap.id,
@@ -61,7 +54,8 @@ export default class BasemapFaderWidgetFactory {
             .syncToLeftNow();
 
         this.#basemapFaderModelBinding = Binding.for(vm, basemapFaderModel)
-            .syncAll("selectedId2", "opacity")
+            .sync("selectedId2")
+            .syncToRight("opacity")
             .enable()
             .syncToLeftNow();
 

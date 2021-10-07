@@ -15,12 +15,21 @@
  */
 import {declare} from "apprt-core/Mutable";
 
-const BasemapFaderModel = declare({
+export default declare({
 
     opacity: 0,
     basemaps: [],
     selectedId2: null,
     baselayer: null,
+
+    $watch: {
+        "selectedId2"(val) {
+            this.addBasemapAsLayer(val);
+        },
+        "opacity"(val) {
+            this.adjustOpacity(val);
+        }
+    },
 
     activate() {
         const basemapModel = this._basemapModel;
@@ -29,14 +38,12 @@ const BasemapFaderModel = declare({
 
         this.waitForBasemaps(basemaps).then(() => {
             this.addBasemapAsLayer();
-        })
-        ;
+        });
     },
 
     waitForBasemaps(basemaps) {
-
         return new Promise(resolve => {
-            if( basemaps[0].basemap.baseLayers.items.length > 0){
+            if (basemaps[0].basemap.baseLayers.items.length > 0) {
                 resolve(this);
             }
             basemaps[0].basemap.baseLayers.watch("length", () => {
@@ -78,5 +85,3 @@ const BasemapFaderModel = declare({
     }
 
 });
-
-module.exports = BasemapFaderModel;
