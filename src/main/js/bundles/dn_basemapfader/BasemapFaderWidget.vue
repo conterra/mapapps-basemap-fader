@@ -31,6 +31,7 @@
                 >
                     <v-select
                         v-model="selectedId"
+                        class="pt-0"
                         :items="basemaps"
                         item-value="id"
                         item-text="title"
@@ -45,6 +46,7 @@
                 >
                     <v-select
                         v-model="selectedId2"
+                        class="pt-0"
                         :items="basemaps2"
                         item-value="id"
                         item-text="title"
@@ -59,6 +61,7 @@
                 >
                     <v-slider
                         v-model="opacity"
+                        always-dirty
                         class="pt-0"
                         hide-details
                     />
