@@ -33,23 +33,22 @@ export default declare({
 
     activate() {
         const basemapModel = this._basemapModel;
-        const basemaps = this.basemaps = basemapModel.basemaps;
         this.selectedId2 = basemapModel.basemaps[1].id;
 
-        this._changeBasemap2(basemaps, basemapModel.selectedId);
+        this._changeBasemap2(basemapModel);
 
         basemapModel.watch("selectedId", ({value}) => {
-            this._changeBasemap2(basemaps, value);
+            this._changeBasemap2(basemapModel);
         });
 
         basemapModel.watch("basemaps", (basemaps) => {
-            this._changeBasemap2(basemaps, basemapModel.selectedId);
+            this._changeBasemap2(basemapModel);
         });
     },
 
-    _changeBasemap2(basemaps, selectedId) {
-        this.basemaps2 = basemaps.filter((basemap) => {
-            if (basemap.id !== selectedId) {
+    _changeBasemap2(basemapModel) {
+        this.basemaps2 = basemapModel.basemaps.filter((basemap) => {
+            if (basemap.id !== basemapModel.selectedId) {
                 return true;
             }
         });
