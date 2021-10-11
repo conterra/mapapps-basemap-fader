@@ -23,6 +23,8 @@
             "theme-autumn",
             "map-init",
             "toolset",
+            "toolrules",
+            "toc",
             "dn_basemapfader",
             "console"
         ],
@@ -81,7 +83,6 @@
                         "listMode": "hide",
                         "title": "Luftbilder NRW",
                         "visible": true,
-                        "selected": true,
                         "description": "Orthophotos, Bodenauflösung von 10cm/Pixel.",
                         "basemap": {
                             "url": "https://www.wms.nrw.de/geobasis/wms_nw_dop",
@@ -103,6 +104,7 @@
                         "listMode": "hide",
                         "title": "Luftbilder NRW Grau",
                         "visible": true,
+                        "selected": true,
                         "description": "Orthophotos, Bodenauflösung von 10cm/Pixel.",
                         "basemap": {
                             "url": "https://www.wms.nrw.de/geobasis/wms_nw_dop",
@@ -515,7 +517,7 @@
         },
         "themes": {
             "ThemeModel": {
-                "_selectedTheme": "everlasting"
+                "_selectedTheme": "autumn"
             },
             "ThemeSelector": {
                 "componentEnabled": true
@@ -546,6 +548,13 @@
                         "windowType": "container",
                         "cssClass": "muted"
                     }
+                ]
+            }
+        },
+        "toolrules": {
+            "ToolActiveStateManager": {
+                "activateOnStartToolIds": [
+                    "basemapFaderToggleTool"
                 ]
             }
         }
