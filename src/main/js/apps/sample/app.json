@@ -25,8 +25,8 @@
             "toolset",
             "toolrules",
             "toc",
-            "dn_basemapfader",
-            "console"
+            "console",
+            "dn_basemapfader"
         ],
         "require": [
             "${app}/app"
@@ -82,7 +82,6 @@
                         "id": "luftbildernrw",
                         "listMode": "hide",
                         "title": "Luftbilder NRW",
-                        "visible": true,
                         "description": "Orthophotos, Bodenauflösung von 10cm/Pixel.",
                         "basemap": {
                             "url": "https://www.wms.nrw.de/geobasis/wms_nw_dop",
@@ -103,7 +102,6 @@
                         "id": "luftbildernrwgrau",
                         "listMode": "hide",
                         "title": "Luftbilder NRW Grau",
-                        "visible": true,
                         "selected": true,
                         "description": "Orthophotos, Bodenauflösung von 10cm/Pixel.",
                         "basemap": {
@@ -122,27 +120,26 @@
                         "thumbnailUrl": "resource('${app}:luftbild_grau.png')"
                     },
                     {
+                        "id": "satellite",
+                        "basemap": "satellite",
+                        "title": "Satellite"
+                    },
+                    {
+                        "id": "streets",
+                        "basemap": "streets",
+                        "title": "Streets"
+                    },
+                    {
+                        "id": "esri_street",
+                        "basemap": "gray-vector",
+                        "title": "Gray streets"
+                    },
+                    {
                         "id": "topo",
                         "title": "${map.basemaps.topo}",
                         "basemap": {
                             "type": "AGS_TILED",
                             "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
-                        }
-                    },
-                    {
-                        "id": "satellite",
-                        "title": "${map.basemaps.satellite}",
-                        "basemap": {
-                            "type": "AGS_TILED",
-                            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"
-                        }
-                    },
-                    {
-                        "id": "streets",
-                        "title": "${map.basemaps.streets}",
-                        "basemap": {
-                            "type": "AGS_TILED",
-                            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"
                         }
                     },
                     {
