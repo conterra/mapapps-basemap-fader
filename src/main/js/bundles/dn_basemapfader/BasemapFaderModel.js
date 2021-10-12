@@ -66,17 +66,18 @@ export default declare({
         }
         const basemap2 = this._basemapModel.findItemById(selectedId2).basemap;
         const clone = basemap2.clone();
-        clone.load();
+        clone.load().then(() => {
+            const baselayer2 = this.baselayer = clone.baseLayers.items[0];
+            baselayer2.listMode = "hide";
+            baselayer2.set("opacity", this.opacity / 100);
 
-        const baselayer2 = this.baselayer = clone.baseLayers.items[0];
-        baselayer2.listMode = "hide";
-        baselayer2.set("opacity", this.opacity / 100);
+            map.add(baselayer2);
+            map.reorder(baselayer2, 0);
 
-        map.add(baselayer2);
-        map.reorder(baselayer2, 0);
+            const basemap = this._basemapModel.findItemById(selectedId).basemap;
+            basemap.baseLayers.items[0].opacity = (100 - this.opacity) / 100;
+        });
 
-        const basemap = this._basemapModel.findItemById(selectedId).basemap;
-        basemap.baseLayers.items[0].opacity = (100 - this.opacity) / 100;
     },
 
     adjustOpacity(value) {
