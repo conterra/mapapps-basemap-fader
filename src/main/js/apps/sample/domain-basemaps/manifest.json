@@ -1,0 +1,30 @@
+{
+    "name": "domain-basemaps",
+    "version": "1.0.0",
+    "dependencies": {
+        "domains-system": "^4.0.0"
+    },
+    "main": "",
+    "layer": "",
+    "i18n": [],
+    "domain-config": {
+        "map-basemaps": [
+            {
+                "id": "satellite",
+                "basemap": "satellite",
+                "title": "Satellite",
+                "selected": true
+            },
+            {
+                "id": "streets",
+                "basemap": "streets",
+                "title": "Streets"
+            },
+            {
+                "id": "esri_street",
+                "basemap": "gray-vector",
+                "title": "Gray streets"
+            }
+        ]
+    }
+}

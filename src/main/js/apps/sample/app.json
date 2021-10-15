@@ -4,6 +4,7 @@
     },
     "load": {
         "bundleLocations": [
+            "${app}",
             "localbundles",
             "bundles"
         ],
@@ -26,6 +27,7 @@
             "toolrules",
             "toc",
             "console",
+            "domain-basemaps",
             "dn_basemapfader"
         ],
         "require": [
@@ -102,7 +104,6 @@
                         "id": "luftbildernrwgrau",
                         "listMode": "hide",
                         "title": "Luftbilder NRW Grau",
-                        "selected": true,
                         "description": "Orthophotos, Bodenauflösung von 10cm/Pixel.",
                         "basemap": {
                             "url": "https://www.wms.nrw.de/geobasis/wms_nw_dop",
@@ -118,21 +119,6 @@
                             ]
                         },
                         "thumbnailUrl": "resource('${app}:luftbild_grau.png')"
-                    },
-                    {
-                        "id": "satellite",
-                        "basemap": "satellite",
-                        "title": "Satellite"
-                    },
-                    {
-                        "id": "streets",
-                        "basemap": "streets",
-                        "title": "Streets"
-                    },
-                    {
-                        "id": "esri_street",
-                        "basemap": "gray-vector",
-                        "title": "Gray streets"
                     },
                     {
                         "id": "topo",
