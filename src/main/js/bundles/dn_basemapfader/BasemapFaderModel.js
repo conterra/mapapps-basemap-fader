@@ -75,8 +75,15 @@ export default declare({
             map.add(baselayer2);
             map.reorder(baselayer2, 0);
 
-            const basemap = this._basemapModel.findItemById(selectedId).basemap;
-            basemap.baseLayers.items[0].opacity = (100 - this.opacity) / 100;
+            const basemap = this._basemapModel.findItemById(selectedId)?.basemap;
+            if (basemap) {
+                basemap.baseLayers.items[0].opacity = (100 - this.opacity) / 100;
+            } else {
+                const watcher = this._basemapModel.watch("selectedId", () => {
+                    watcher.remove();
+                    basemap.baseLayers.items[0].opacity = (100 - this.opacity) / 100;
+                });
+            }
         });
 
     },
