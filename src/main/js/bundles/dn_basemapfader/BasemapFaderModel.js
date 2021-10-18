@@ -69,6 +69,7 @@ export default declare({
         clone.load().then(() => {
             const baselayer2 = this.baselayer = clone.baseLayers.items[0];
             baselayer2.listMode = "hide";
+            baselayer2.legendEnabled = false;
             baselayer2.set("opacity", this.opacity / 100);
 
             map.add(baselayer2);

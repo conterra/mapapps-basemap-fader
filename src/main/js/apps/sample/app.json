@@ -27,6 +27,7 @@
             "toolrules",
             "toc",
             "console",
+            "legend",
             "domain-basemaps",
             "dn_basemapfader"
         ],
