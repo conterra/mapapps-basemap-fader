@@ -147,7 +147,7 @@
                             "description": "Basisdaten der Stadt Köln",
                             "url": "https://services.conterra.de/arcgis/rest/services/common/koeln/MapServer",
                             "type": "AGS_DYNAMIC",
-                            "visible": false,
+                            "visible": true,
                             "sublayers": [
                                 {
                                     "title": "${map.koeln1.districts.title}",
@@ -277,7 +277,7 @@
                             "title": "${map.koeln2.title}",
                             "url": "https://services.conterra.de/arcgis/rest/services/common/koeln/MapServer",
                             "type": "AGS_DYNAMIC",
-                            "visible": false,
+                            "visible": true,
                             "sublayers": [
                                 {
                                     "title": "${map.koeln2.libraries.title}",

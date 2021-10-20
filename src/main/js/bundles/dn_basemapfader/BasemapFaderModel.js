@@ -38,6 +38,7 @@ export default declare({
         this._changeBasemap2(basemapModel);
 
         basemapModel.watch("selectedId", ({value}) => {
+            this._remove2ndBasemap();
             this._changeBasemap2(basemapModel);
         });
 
@@ -60,10 +61,7 @@ export default declare({
         const selectedId = basemapModel.selectedId;
         const selectedId2 = this.selectedId2;
 
-        const map = this._mapWidgetModel.get("map");
-        if (this.baselayer) {
-            map.remove(this.baselayer);
-        }
+        this._remove2ndBasemap();
         const basemap2 = this._basemapModel.findItemById(selectedId2).basemap;
         const clone = basemap2.clone();
         clone.load().then(() => {
@@ -72,6 +70,7 @@ export default declare({
             baselayer2.legendEnabled = false;
             baselayer2.set("opacity", this.opacity / 100);
 
+            const map = this._mapWidgetModel.map;
             map.add(baselayer2);
             map.reorder(baselayer2, 0);
 
@@ -101,6 +100,13 @@ export default declare({
         const selectedId = basemapModel.selectedId;
         const basemap = this._basemapModel.findItemById(selectedId).basemap;
         basemap.baseLayers.items[0].opacity = (100 - value) / 100;
+    },
+
+    _remove2ndBasemap() {
+        const map = this._mapWidgetModel.map;
+        if (this.baselayer) {
+            map.remove(this.baselayer);
+        }
     }
 
 });
