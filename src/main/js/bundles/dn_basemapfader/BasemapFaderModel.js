@@ -70,6 +70,9 @@ export default declare({
             baselayer2.legendEnabled = false;
             baselayer2.set("opacity", this.opacity / 100);
 
+            // Advanced Editing config to prevent snapping (EDITING-144)
+            this._setAdvancedEditingConfig(baselayer2);
+
             const map = this._mapWidgetModel.map;
             map.add(baselayer2);
             map.reorder(baselayer2, 0);
@@ -106,6 +109,18 @@ export default declare({
         const map = this._mapWidgetModel.map;
         if (this.baselayer) {
             map.remove(this.baselayer);
+        }
+    },
+
+    _setAdvancedEditingConfig(layer) {
+        layer.advancedEditing = {
+            allowSnapping: true,
+            allowEditing: true
+        };
+        if (layer.sublayer && layer.sublayer.length) {
+            layer.sublayer.forEach(sublayer => {
+                this._setAdvancedEditingConfig(sublayer);
+            });
         }
     }
 
