@@ -114,8 +114,8 @@ export default declare({
 
     _setAdvancedEditingConfig(layer) {
         layer.advancedEditing = {
-            allowSnapping: true,
-            allowEditing: true
+            allowSnapping: false,
+            allowEditing: false
         };
         if (layer.sublayers && layer.sublayers.length) {
             layer.sublayers.forEach(sublayer => {
