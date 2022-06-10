@@ -70,8 +70,10 @@ export default declare({
             baselayer2.legendEnabled = false;
             baselayer2.set("opacity", this.opacity / 100);
 
-            // Advanced Editing config to prevent snapping
-            this._setAdvancedEditingConfig(baselayer2);
+            baselayer2.load().then(() => {
+                // Advanced Editing config to prevent snapping
+                this._setAdvancedEditingConfig(baselayer2);
+            });
 
             const map = this._mapWidgetModel.map;
             map.add(baselayer2);
