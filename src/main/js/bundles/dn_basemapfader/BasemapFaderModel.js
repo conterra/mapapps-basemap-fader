@@ -124,6 +124,11 @@ export default declare({
                 this._setAdvancedEditingConfig(sublayer);
             });
         }
+        if (layer.layers && layer.layers.length) {
+            layer.layers.forEach(sublayer => {
+                this._setAdvancedEditingConfig(sublayer);
+            });
+        }
     }
 
 });
