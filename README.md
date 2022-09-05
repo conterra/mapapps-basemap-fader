@@ -3,24 +3,19 @@ The Basemap Fader Bundle is a new widget that allows you to fade two basemap int
 
 If you are using map.apps 3 see https://github.com/conterra/mapapps-basemap-fader/tree/3.x
 
-Sample App
-------------------
+## Sample App
+
 https://demos.conterra.de/mapapps/resources/apps/downloads_basemapfader4/index.html
 
 ![Screenshot Sample App Basemap Fader](https://github.com/conterra/mapapps-basemap-fader/blob/master/screenshot.PNG)
 
-Installation Guide
-------------------
+## Installation Guide
+
 **Requirement: map.apps 4.3.0**
 
-Simply add the bundle "dn_basemapfader" to your map.apps 4 app. Additionally you should load at least
-two basemaps into the app.
+[dn_basemapfader Documentation](https://github.com/conterra/mapapps-basemap-fader/tree/master/src/main/js/bundles/dn_basemapfader)
 
-#### Restrictions
-This bundle does not work for vector or hybrid basemaps.
-
-Development Guide
-------------------
+## Development Guide
 ### Define the mapapps remote base
 Before you can run the project you have to define the mapapps.remote.base property in the pom.xml-file:
 `<mapapps.remote.base>http://%YOURSERVER%/ct-mapapps-webapp-%VERSION%</mapapps.remote.base>`
