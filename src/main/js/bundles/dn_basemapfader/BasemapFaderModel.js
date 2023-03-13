@@ -38,7 +38,6 @@ export default declare({
         this._changeBasemap2(basemapModel);
 
         basemapModel.watch("selectedId", ({value}) => {
-            this._remove2ndBasemap();
             this._changeBasemap2(basemapModel);
         });
 
@@ -55,6 +54,7 @@ export default declare({
         });
 
         if (basemapModel.selectedId === this.selectedId2) {
+            this._remove2ndBasemap();
             this.selectedId2 = this.basemaps2[0].id;
         }
     },
