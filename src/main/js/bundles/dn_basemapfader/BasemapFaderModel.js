@@ -73,6 +73,11 @@ export default declare({
             baselayer2.legendEnabled = false;
             baselayer2.set("opacity", this.opacity / 100);
 
+            // if baselayer2 is a group pass opacity to members
+            if (baselayer2.type === "group") {
+                baselayer2.layers.map(layer => layer.opacity = baselayer2.opacity);
+            }
+
             baselayer2.load().then(() => {
                 // Advanced Editing config to prevent snapping
                 this._setAdvancedEditingConfig(baselayer2);
@@ -84,11 +89,23 @@ export default declare({
 
             const basemap = this._basemapModel.findItemById(selectedId)?.basemap;
             if (basemap) {
-                basemap.baseLayers.items[0].opacity = (100 - this.opacity) / 100;
+                const basemapLayerItem = basemap.baseLayers.items[0];
+                basemapLayerItem.opacity = (100 - this.opacity) / 100;
+
+                // if basemapLayerItem is a group pass opacity to members
+                if (basemapLayerItem.type === "group") {
+                    basemapLayerItem.layers.map(layer => layer.opacity = basemapLayerItem.opacity);
+                }
             } else {
                 const watcher = this._basemapModel.watch("selectedId", () => {
                     watcher.remove();
-                    basemap.baseLayers.items[0].opacity = (100 - this.opacity) / 100;
+                    const basemapLayerItem = basemap.baseLayers.items[0];
+                    basemapLayerItem.opacity = (100 - this.opacity) / 100;
+
+                    // if basemapLayerItem is a group pass opacity to members
+                    if (basemapLayerItem.type === "group") {
+                        basemapLayerItem.layers.map(layer => layer.opacity = basemapLayerItem.opacity);
+                    }
                 });
             }
         });
@@ -96,18 +113,32 @@ export default declare({
     },
 
     adjustOpacity(value) {
-        if (this.baselayer.id === this._mapWidgetModel.get("map").basemap.baseLayers.items[0].id) {
-            this.baselayer.opacity = 1;
+        const baseLayer = this.baselayer;
+
+        if (baseLayer.id === this._mapWidgetModel.get("map").basemap.baseLayers.items[0].id) {
+            baseLayer.opacity = 1;
             return;
         }
-        if (this.baselayer) {
-            this.baselayer.opacity = (value / 100);
+        if (baseLayer) {
+            baseLayer.opacity = (value / 100);
+
+            // if baseLayer is a group pass opacity to members
+            if (baseLayer.type === "group") {
+                baseLayer.layers.map(layer => layer.opacity = baseLayer.opacity);
+            }
         }
 
         const basemapModel = this._basemapModel;
         const selectedId = basemapModel.selectedId;
         const basemap = this._basemapModel.findItemById(selectedId).basemap;
-        basemap.baseLayers.items[0].opacity = (100 - value) / 100;
+        const basemapLayerItem = basemap.baseLayers.items[0];
+
+        basemapLayerItem.opacity = (100 - value) / 100;
+
+        // if basemapLayerItem is a group pass opacity to members
+        if (basemapLayerItem.type === "group") {
+            basemapLayerItem.map(layer => layer.opacity = basemapLayerItem.opacity);
+        }
     },
 
     _remove2ndBasemap() {
@@ -133,5 +164,4 @@ export default declare({
             });
         }
     }
-
 });
