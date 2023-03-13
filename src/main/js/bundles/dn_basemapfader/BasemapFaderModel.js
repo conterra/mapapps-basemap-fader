@@ -137,7 +137,7 @@ export default declare({
 
         // if basemapLayerItem is a group pass opacity to members
         if (basemapLayerItem.type === "group") {
-            basemapLayerItem.map(layer => layer.opacity = basemapLayerItem.opacity);
+            basemapLayerItem.layers.map(layer => layer.opacity = basemapLayerItem.opacity);
         }
     },
 
