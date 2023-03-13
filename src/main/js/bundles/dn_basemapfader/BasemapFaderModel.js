@@ -53,7 +53,10 @@ export default declare({
                 return true;
             }
         });
-        this.selectedId2 = this.basemaps2[0].id;
+
+        if (basemapModel.selectedId === this.selectedId2) {
+            this.selectedId2 = this.basemaps2[0].id;
+        }
     },
 
     addBasemapAsLayer() {
