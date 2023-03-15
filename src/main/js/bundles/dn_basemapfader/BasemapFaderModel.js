@@ -71,11 +71,11 @@ export default declare({
             const baselayer2 = this.baselayer = clone.baseLayers.items[0];
             baselayer2.listMode = "hide";
             baselayer2.legendEnabled = false;
-            baselayer2.set("opacity", this.opacity / 100);
 
-            // if baselayer2 is a group pass opacity to members
             if (baselayer2.type === "group") {
-                baselayer2.layers.map(layer => layer.opacity = baselayer2.opacity);
+                baselayer2.layers.map(layer => layer.opacity = this.opacity / 100);
+            } else {
+                baselayer2.set("opacity", this.opacity / 100);
             }
 
             baselayer2.load().then(() => {
@@ -90,21 +90,21 @@ export default declare({
             const basemap = this._basemapModel.findItemById(selectedId)?.basemap;
             if (basemap) {
                 const basemapLayerItem = basemap.baseLayers.items[0];
-                basemapLayerItem.opacity = (100 - this.opacity) / 100;
 
-                // if basemapLayerItem is a group pass opacity to members
                 if (basemapLayerItem.type === "group") {
-                    basemapLayerItem.layers.map(layer => layer.opacity = basemapLayerItem.opacity);
+                    basemapLayerItem.layers.map(layer => layer.opacity = (100 - this.opacity) / 100);
+                } else {
+                    basemapLayerItem.opacity = (100 - this.opacity) / 100;
                 }
             } else {
                 const watcher = this._basemapModel.watch("selectedId", () => {
                     watcher.remove();
                     const basemapLayerItem = basemap.baseLayers.items[0];
-                    basemapLayerItem.opacity = (100 - this.opacity) / 100;
 
-                    // if basemapLayerItem is a group pass opacity to members
                     if (basemapLayerItem.type === "group") {
-                        basemapLayerItem.layers.map(layer => layer.opacity = basemapLayerItem.opacity);
+                        basemapLayerItem.layers.map(layer => layer.opacity = (100 - this.opacity) / 100);
+                    } else {
+                        basemapLayerItem.opacity = (100 - this.opacity) / 100;
                     }
                 });
             }
@@ -120,11 +120,10 @@ export default declare({
             return;
         }
         if (baseLayer) {
-            baseLayer.opacity = (value / 100);
-
-            // if baseLayer is a group pass opacity to members
             if (baseLayer.type === "group") {
-                baseLayer.layers.map(layer => layer.opacity = baseLayer.opacity);
+                baseLayer.layers.map(layer => layer.opacity = (value / 100));
+            } else {
+                baseLayer.opacity = (value / 100);
             }
         }
 
@@ -133,11 +132,10 @@ export default declare({
         const basemap = this._basemapModel.findItemById(selectedId).basemap;
         const basemapLayerItem = basemap.baseLayers.items[0];
 
-        basemapLayerItem.opacity = (100 - value) / 100;
-
-        // if basemapLayerItem is a group pass opacity to members
         if (basemapLayerItem.type === "group") {
-            basemapLayerItem.layers.map(layer => layer.opacity = basemapLayerItem.opacity);
+            basemapLayerItem.layers.map(layer => layer.opacity = (100 - value) / 100);
+        } else {
+            basemapLayerItem.opacity = (100 - value) / 100;
         }
     },
 
