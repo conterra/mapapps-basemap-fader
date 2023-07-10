@@ -1,7 +1,5 @@
 # Basemap Fader Bundle
-The Basemap Fader Bundle is a new widget that allows you to fade two basemap into eacht other.
-
-If you are using map.apps 3 see https://github.com/conterra/mapapps-basemap-fader/tree/3.x
+The Basemap Fader bundle provides a widget that allows you to fade two basemap into each other.
 
 ## Sample App
 
