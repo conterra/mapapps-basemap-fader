@@ -473,10 +473,9 @@
         </plugins>
     </build>
     <scm>
-        <connection>scm:git:https://github.com/conterra/mapapps-devnet-blueprint.git</connection>
-        <developerConnection>scm:git:https://github.com/conterra/mapapps-devnet-blueprint.git
-        </developerConnection>
-        <url>https://github.com/conterra/mapapps-devnet-blueprint</url>
+        <connection>scm:git:https://github.com/conterra/mapapps-basemap-fader.git</connection>
+        <developerConnection>scm:git:https://github.com/conterra/mapapps-basemap-fader.git</developerConnection>
+        <url>https://github.com/conterramapapps-basemap-fader</url>
         <tag>HEAD</tag>
     </scm>
     <distributionManagement>
