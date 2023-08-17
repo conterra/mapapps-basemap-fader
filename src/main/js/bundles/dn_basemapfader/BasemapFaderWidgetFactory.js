@@ -48,7 +48,7 @@ export default class BasemapFaderWidgetFactory {
                 return {
                     id: basemap.id,
                     title: basemap.title
-                }
+                };
             }))
             .enable()
             .syncToLeftNow();

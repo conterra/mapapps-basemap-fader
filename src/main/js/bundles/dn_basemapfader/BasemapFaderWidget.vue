@@ -96,5 +96,5 @@
                 selectedId2: ""
             };
         }
-    }
+    };
 </script>
