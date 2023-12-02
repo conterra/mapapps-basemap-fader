@@ -73,7 +73,7 @@ export default declare({
             baselayer2.legendEnabled = false;
 
             if (baselayer2.type === "group") {
-                baselayer2.layers.map(layer => layer.opacity = this.opacity / 100);
+                baselayer2.layers.forEach(layer => layer.opacity = this.opacity / 100);
             } else {
                 baselayer2.set("opacity", this.opacity / 100);
             }
