@@ -92,11 +92,12 @@
             ]
         },
         {
-            "name": "BasemapFaderModel",
+            "name": "Config",
+            "impl": "BasemapFaderModel",
             "provides": "dn_basemapfader.BasemapFaderModel",
             "propertiesConstructor": true,
             "properties": {
-            "opacity":0
+                "opacity": 0
             },
             "references": [
                 {
