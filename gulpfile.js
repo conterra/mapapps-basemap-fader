@@ -1,18 +1,3 @@
-/*
- * Copyright (C) 2023 con terra GmbH (info@conterra.de)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *         http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 const gulp = require("gulp");
 const mapapps = require('ct-mapapps-gulp-js');
 const mapappsBrowserSync = require("ct-mapapps-browser-sync");
@@ -64,14 +49,14 @@ mapapps.registerTasks({
     },
 
     /* a list of themes inside this project */
-    themes: [/*"sample-theme"*/],
+    themes: ['theme-custom'],
     /* state that the custom theme will be dependant from map.apps everlasting theme that provides the base styles */
     hasBaseThemes: true,
     /* state that we want to support vuetify components and therefore need the vuetify core styles*/
     hasVuetify: true,
     themeChangeTargets: {
         "vuetify": [
-            // "sample_theme"
+            "theme-custom"
         ]
     },
     /* A list oft target browser versions. This should be streamlined with Esri JS API requirements. */
@@ -139,7 +124,6 @@ gulp.task("lint",
 gulp.task("preview",
     gulp.series(
         "build",
-        "lint",
         gulp.parallel(
             "watch",
             "browser-sync"
@@ -152,7 +136,7 @@ gulp.task("run-tests",
         function transportTestUrls() {
             // transport test url to run-browser-tests
             // eslint-disable-next-line max-len
-            const testsAt = mapappsBrowserSync.state.url + "/resources/jsregistry/root/@conterra/mapapps-mocha-runner/latest/mocha.html?boot=/js/tests/test-init.js&timeout=5000&test=dn_basemapfader/tests/all&reporter=tap";
+            const testsAt = mapappsBrowserSync.state.url + "/resources/jsregistry/root/@conterra/mapapps-mocha-runner/latest/mocha.html?boot=/js/tests/test-init.js&timeout=5000&test=sample_tests/all&reporter=tap";
             runBrowserTests.push(testsAt);
             return Promise.resolve();
         },

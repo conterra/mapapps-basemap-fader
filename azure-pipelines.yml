@@ -1,0 +1,74 @@
+parameters:
+    - name: release
+      type: boolean
+      default: false
+    - name: targetVersion
+      type: string
+      default: 1.0.0
+    - name: nextDevVersion
+      type: string
+      default: 1.0.0
+
+trigger: none
+#- master
+
+pool: VMSS-Agent-Pool
+
+steps:
+    - script: echo "##vso[task.setvariable variable=AGENT_HOME]${HOME}"
+    - task: ConfigureMaven@0
+      displayName: "Maven: Download settings.xml"
+      inputs:
+        secureMavenSettingsXml: maven-settings.xml
+        useJDK: 11
+    - task: MavenAuthenticate@0
+      displayName: 'Register authentication for repository.conterra.de'
+      inputs:
+          MavenServiceConnections: repository-conterra-de-prdserv
+
+    - checkout: self
+      displayName: Checkout
+      persistCredentials: true
+    - script: |
+          git config user.email "az-pipeline@conterra.de"
+          git config user.name "AZ Pipeline"
+          git fetch origin $(Build.SourceBranchName)
+          git switch $(Build.SourceBranchName)
+          git status
+      displayName: Switch to branch $(Build.SourceBranchName)
+
+    - task: Cache@2
+      inputs:
+        key: '"maven" | "$(Agent.OS)" | "0" | pom.xml'
+        path: $(AGENT_HOME)/.m2/repository
+      displayName: "Cache: maven repo"
+
+    - task: Cache@2
+      inputs:
+        key: '"npm" | "$(Agent.OS)" | "0" | package.json'
+        path: node_modules
+      displayName: "Cache: node_modules"
+
+    - script: |
+          mvn validate -P write-release-versions -Dreplace.target.version=${{ parameters.targetVersion }}
+          mvn versions:set -DnewVersion=${{ parameters.targetVersion }} -DgenerateBackupPoms=false
+          git add .
+          git commit -m "Set version to ${{ parameters.targetVersion }}"
+      displayName: Set release version to ${{ parameters.targetVersion }}
+      condition: and(succeeded(), eq('${{ parameters.release }}', true))
+
+    #- script: mvn test -P include-mapapps-deps,run-js-tests
+    #  displayName: Run JS Tests
+    - script: mvn deploy -P compress -DskipTests=true
+      displayName: 'Build + Compress'
+
+    - script: |
+          git tag ${{ parameters.targetVersion }}
+          mvn validate -P write-release-versions -Dreplace.target.version=${{ parameters.nextDevVersion }}-SNAPSHOT
+          mvn versions:set -DnewVersion=${{ parameters.nextDevVersion }}-SNAPSHOT -DgenerateBackupPoms=false
+          git add .
+          git commit -m "Set next dev version to ${{ parameters.nextDevVersion }}"
+          git push
+          git push --tags
+      displayName: Set next dev version to ${{ parameters.nextDevVersion }}-SNAPSHOT
+      condition: and(succeeded(), eq('${{ parameters.release }}', true))

@@ -3,6 +3,13 @@
         "dbaeumer.vscode-eslint",
         "Vue.volar",
         "Esri.arcgis-jsapi-snippets",
-        "ctjdr.vscode-apprt-bundles"
+        "ctjdr.vscode-apprt-bundles",
+        "yzane.markdown-pdf",
+        "yzhang.markdown-all-in-one",
+        "EditorConfig.EditorConfig",
+        "waderyan.gitblame",
+        "mhutchie.git-graph",
+        "donjayamanne.githistory",
+        "gruntfuggly.todo-tree"
     ]
 }
