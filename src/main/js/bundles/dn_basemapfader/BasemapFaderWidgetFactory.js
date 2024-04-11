@@ -17,6 +17,7 @@ import BasemapFaderWidget from "./BasemapFaderWidget.vue";
 import Vue from "apprt-vue/Vue";
 import VueDijit from "apprt-vue/VueDijit";
 import Binding from "apprt-binding/Binding";
+import opacity from "esri/smartMapping/renderers/opacity";
 
 export default class BasemapFaderWidgetFactory {
 
@@ -54,8 +55,7 @@ export default class BasemapFaderWidgetFactory {
             .syncToLeftNow();
 
         this.#basemapFaderModelBinding = Binding.for(vm, basemapFaderModel)
-            .sync("selectedId2")
-            .syncToRight("opacity")
+            .syncAll("selectedId2", "opacity")
             .syncToLeft("basemaps2")
             .enable()
             .syncToLeftNow();

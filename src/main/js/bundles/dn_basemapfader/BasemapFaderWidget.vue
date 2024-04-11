@@ -87,14 +87,27 @@
 
     export default {
         mixins: [Bindable],
-        data: function () {
-            return {
-                basemaps: [],
-                basemaps2: [],
-                opacity: 0,
-                selectedId: "",
-                selectedId2: ""
-            };
+        props:{
+            opacity:{
+                type:Number,
+                default: 0
+            },
+            basemaps:{
+                type:Array,
+                default: () => []
+            },
+            basemaps2:{
+                type:Array,
+                default: () => []
+            },
+            selectedId:{
+                type:String,
+                default:""
+            },
+            selectedId2:{
+                type:String,
+                default:""
+            }
         }
     };
 </script>
