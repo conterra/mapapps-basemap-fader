@@ -6,9 +6,9 @@
     "vendor": "con terra GmbH",
     "productName": "devnet-mapapps-basemapfader",
     "dependencies": {
-        "apprt-vue": "^4.3.0",
-        "apprt-binding": "^4.3.0",
-        "apprt-vuetify": "^4.3.0",
+        "apprt-vue": "^4.17.0",
+        "apprt-binding": "^4.17.0",
+        "apprt-vuetify": "^4.17.0",
         "map-basemaps-api": "^4.0.0"
     },
     "CSS-Themes-Extension": [
