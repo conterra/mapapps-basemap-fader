@@ -17,7 +17,6 @@ import BasemapFaderWidget from "./BasemapFaderWidget.vue";
 import Vue from "apprt-vue/Vue";
 import VueDijit from "apprt-vue/VueDijit";
 import Binding from "apprt-binding/Binding";
-import opacity from "esri/smartMapping/renderers/opacity";
 
 export default class BasemapFaderWidgetFactory {
 

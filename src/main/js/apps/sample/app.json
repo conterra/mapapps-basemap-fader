@@ -39,11 +39,10 @@
         ]
     },
     "bundles": {
-        "dn_basemapfader":{
-            "Config":{
-            "opacity":0
+        "dn_basemapfader": {
+            "Config": {
+                "opacity": 0
             }
-
         },
         "banner": {
             "BannerWidget": {
