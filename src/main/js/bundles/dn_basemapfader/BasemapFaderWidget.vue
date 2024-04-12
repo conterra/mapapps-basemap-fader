@@ -1,6 +1,6 @@
 <!--
 
-    Copyright (C) 2023 con terra GmbH (info@conterra.de)
+    Copyright (C) 2024 con terra GmbH (info@conterra.de)
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -87,14 +87,27 @@
 
     export default {
         mixins: [Bindable],
-        data: function () {
-            return {
-                basemaps: [],
-                basemaps2: [],
-                opacity: 0,
-                selectedId: "",
-                selectedId2: ""
-            };
+        props:{
+            opacity: {
+                type: Number,
+                default: 0
+            },
+            basemaps: {
+                type: Array,
+                default: () => []
+            },
+            basemaps2: {
+                type: Array,
+                default: () => []
+            },
+            selectedId: {
+                type: String,
+                default: ""
+            },
+            selectedId2: {
+                type: String,
+                default: ""
+            }
         }
     };
 </script>

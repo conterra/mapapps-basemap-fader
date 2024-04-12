@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 con terra GmbH (info@conterra.de)
+ * Copyright (C) 2024 con terra GmbH (info@conterra.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -99,12 +99,14 @@ export default declare({
             } else {
                 const watcher = this._basemapModel.watch("selectedId", () => {
                     watcher.remove();
-                    const basemapLayerItem = basemap.baseLayers.items[0];
+                    const basemapLayerItem = basemap?.baseLayers?.items[0];
 
-                    if (basemapLayerItem.type === "group") {
-                        basemapLayerItem.layers.map(layer => layer.opacity = (100 - this.opacity) / 100);
-                    } else {
-                        basemapLayerItem.opacity = (100 - this.opacity) / 100;
+                    if (basemapLayerItem) {
+                        if (basemapLayerItem.type === "group") {
+                            basemapLayerItem.layers.map(layer => layer.opacity = (100 - this.opacity) / 100);
+                        } else {
+                            basemapLayerItem.opacity = (100 - this.opacity) / 100;
+                        }
                     }
                 });
             }

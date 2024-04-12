@@ -92,10 +92,13 @@
             ]
         },
         {
-            "name": "BasemapFaderModel",
+            "name": "Config",
+            "impl": "BasemapFaderModel",
             "provides": "dn_basemapfader.BasemapFaderModel",
             "propertiesConstructor": true,
-            "properties": {},
+            "properties": {
+                "opacity": 0
+            },
             "references": [
                 {
                     "name": "_mapWidgetModel",

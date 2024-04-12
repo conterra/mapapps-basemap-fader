@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 con terra GmbH (info@conterra.de)
+ * Copyright (C) 2024 con terra GmbH (info@conterra.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,8 +54,7 @@ export default class BasemapFaderWidgetFactory {
             .syncToLeftNow();
 
         this.#basemapFaderModelBinding = Binding.for(vm, basemapFaderModel)
-            .sync("selectedId2")
-            .syncToRight("opacity")
+            .syncAll("selectedId2", "opacity")
             .syncToLeft("basemaps2")
             .enable()
             .syncToLeftNow();
