@@ -1,3 +1,6 @@
+[![devnet-bundle-snapshot](https://github.com/conterra/mapapps-basemap-fader/actions/workflows/devnet-bundle-snapshot.yml/badge.svg)](https://github.com/conterra/mapapps-basemap-fader/actions/workflows/devnet-bundle-snapshot.yml)
+![Static Badge](https://img.shields.io/badge/tested_for_map.apps-4.17.0-%20?labelColor=%233E464F&color=%232FC050)
+
 # Basemap Fader Bundle
 The Basemap Fader bundle provides a widget that allows you to fade two basemap into each other.
 
