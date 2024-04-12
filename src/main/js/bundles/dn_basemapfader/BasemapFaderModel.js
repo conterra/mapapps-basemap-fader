@@ -99,12 +99,14 @@ export default declare({
             } else {
                 const watcher = this._basemapModel.watch("selectedId", () => {
                     watcher.remove();
-                    const basemapLayerItem = basemap.baseLayers.items[0];
+                    const basemapLayerItem = basemap?.baseLayers?.items[0];
 
-                    if (basemapLayerItem.type === "group") {
-                        basemapLayerItem.layers.map(layer => layer.opacity = (100 - this.opacity) / 100);
-                    } else {
-                        basemapLayerItem.opacity = (100 - this.opacity) / 100;
+                    if (basemapLayerItem) {
+                        if (basemapLayerItem.type === "group") {
+                            basemapLayerItem.layers.map(layer => layer.opacity = (100 - this.opacity) / 100);
+                        } else {
+                            basemapLayerItem.opacity = (100 - this.opacity) / 100;
+                        }
                     }
                 });
             }
