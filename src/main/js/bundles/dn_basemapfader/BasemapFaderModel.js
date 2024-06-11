@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 con terra GmbH (info@conterra.de)
+ * Copyright (C) 2023 con terra GmbH (info@conterra.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ export default declare({
     baselayer: null,
 
     $watch: {
-        "selectedId2"(val) {
+        "selectedId2"() {
             this.addBasemapAsLayer();
         },
         "opacity"(val) {
@@ -37,11 +37,11 @@ export default declare({
 
         this._changeBasemap2(basemapModel);
 
-        basemapModel.watch("selectedId", ({value}) => {
+        basemapModel.watch("selectedId", () => {
             this._changeBasemap2(basemapModel);
         });
 
-        basemapModel.watch("basemaps", (basemaps) => {
+        basemapModel.watch("basemaps", () => {
             this._changeBasemap2(basemapModel);
         });
     },
