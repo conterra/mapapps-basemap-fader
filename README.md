@@ -8,7 +8,7 @@ The Basemap Fader bundle provides a widget that allows you to fade two basemap i
 
 https://demos.conterra.de/mapapps/resources/apps/downloads_basemapfader4/index.html
 
-![Screenshot Sample App Basemap Fader](https://github.com/conterra/mapapps-basemap-fader/blob/master/screenshot.PNG)
+![Screenshot Sample App Basemap Fader](https://github.com/conterra/mapapps-basemap-fader/blob/main/screenshot.PNG)
 
 ## Installation Guide
 
