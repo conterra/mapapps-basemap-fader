@@ -25,7 +25,14 @@ test('Create Screenshot for GitHub Page', async ({ page }) => {
     const canvas = new MapCanvas(page);
     await canvas.loaded();
     await page.waitForTimeout(5000);
-    await canvas.clickOnMap({ x: 400, y: 400 });
+    const thumb = page.locator('.v-slider__thumb');
+    const box = await thumb.boundingBox();
+    if (box) {
+        await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+        await page.mouse.down();
+        await page.mouse.move(box.x + box.width / 2 + 250, box.y + box.height / 2, { steps: 10 });
+        await page.mouse.up();
+    }
 
     await expectToMatchScreenshot(page, "screenshot.png", {
         timeout: 10000
