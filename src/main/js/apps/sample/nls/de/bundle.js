@@ -15,19 +15,7 @@
  */
 module.exports = {
     apptitle: "Basemap Fader Sample",
-    custominfo: {
-        content: "Diese App zeigt das Basemap Fader Bundle, welches es erm\u00F6glicht, zwei Grundkarten zu \u00fcberblenden. Um die Funktionalit\u00e4t auszuprobieren, klicken Sie auf den Knopf in der unteren rechten Ecke"
-    },
     map: {
-        basemaps: {
-            streets: "Stra\u00DFenkarte",
-            topo: "Topographische Karte",
-            satellite: "Satellitenbilder",
-            gray: "Grau stilisiert"
-        },
-        basemaps1: "W\u00e4hlen Sie eine Grundkarte",
-        basemap2: "W\u00e4hlen Sie eine andere Grundkarte",
-        close: "Schließen",
         koeln1: {
             title: "Basisdaten",
             districts: {
@@ -80,7 +68,32 @@ module.exports = {
                 titleSingle: "Veranstaltungsort",
                 text: "<b>{NAME}</b> ist ein {expression/carrier} Veranstaltungsort."
             }
+        },
+        basemaps: {
+            gray: "Stra\xDFenkarte (grau)",
+            streets: "Stra\xDFenkarte",
+            topo: "Topographische Karte",
+            hybrid: "Luftbild (hybrid)"
         }
+    },
+    tools: {
+        drawerLeft: "Werkzeuge",
+        measuring: "Messwerkzeuge"
+    },
+    common: {
+        number: "Nummer",
+        area: "Fl\xE4che [ha]",
+        totalArea: "Anteil an Gesamtfl\xE4che [%]",
+        name: "Name",
+        provider: "Tr\xE4ger",
+        address: "Adresse",
+        furtherinfo: "Weitere Informationen",
+        precint: "Stadtbezirk",
+        district: "Stadtviertel",
+        private: "private",
+        municipal: "st\xE4dtischer",
+        zip: "PLZ",
+        type: "Art"
     },
     search: {
         title: "Adressen"
@@ -88,18 +101,5 @@ module.exports = {
     tool:{
         title: "Grundkarten Fader",
         tooltip: "Grundkarten Fader"
-    },
-    common: {
-        number: "Nummer",
-        area: "Fl\u00E4che [ha]",
-        totalArea: "Anteil an Gesamtfl\u00E4che [%]",
-        name: "Name",
-        provider: "Tr\u00E4ger",
-        address: "Adresse",
-        furtherinfo: "Weitere Informationen",
-        precint: "Stadtbezirk",
-        district: "Stadtviertel",
-        private: "private",
-        municipal: "st\u00E4dtischer"
     }
 };

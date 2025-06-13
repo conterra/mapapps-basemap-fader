@@ -9,27 +9,35 @@
             "bundles"
         ],
         "allowedBundles": [
-            "system",
+            "agssearch",
             "banner",
-            "console",
-            "custominfo",
-            "notifier",
-            "splashscreen",
-            "templatelayout",
-            "template-seasons",
-            "theme-everlasting",
-            "theme-winter",
-            "theme-spring",
-            "theme-summer",
-            "theme-autumn",
+            "basemaptoggler",
+            "languagetoggler",
+            "locateme",
+            "locator-store",
             "map-init",
-            "toolset",
-            "toolrules",
+            "map-preload-2D",
+            "mapnavigation",
+            "measurement-2d",
+            "notifier",
+            "parameter-url",
+            "popups-default",
+            "printing",
+            "result-ui",
+            "scalebar",
+            "search-ui",
+            "selection-ui",
+            "sketching",
+            "splashscreen",
+            "system",
+            "template-seasons",
+            "templatelayout",
+            "theme-autumn",
             "toc",
-            "console",
-            "legend",
+            "toolset",
             "domain-basemaps",
-            "dn_basemapfader"
+            "dn_basemapfader",
+            "dn_imprintprivacy"
         ],
         "i18n": [
             "bundle"
@@ -41,49 +49,34 @@
                 "opacity": 0
             }
         },
+        "agssearch": {
+            "AutoStoreRegistration": {
+                "componentEnabled": true
+            }
+        },
         "banner": {
             "BannerWidget": {
                 "label": "Developer Network",
-                "image": "resource('${app}:/images/logo_conterra.png')",
-                "imageWidth": 200,
+                "image": "resource('${app}:/assets/logo.svg')",
+                "imageWidth": 150,
                 "imagePosition": "above",
-                "link": "http://developernetwork.conterra.de"
+                "link": "http://conterra.github.io"
             }
         },
-        "custominfo": {
-            "CustomInfoToggleTool": [
-                {
-                    "id": "customInfoTool",
-                    "activateOnStartup": true,
-                    "title": "Information",
-                    "tooltip": "Information",
-                    "iconClass": "icon-custom-info-info",
-                    "toolClass": "ctInfo",
-                    "togglable": true,
-                    "widgetSettings": {
-                        "content": "${custominfo.content}",
-                        "window": {
-                            "title": "Information",
-                            "marginBox": {
-                                "w": 300,
-                                "h": 160,
-                                "l": 25,
-                                "b": 70
-                            },
-                            "draggable": true,
-                            "closable": true,
-                            "modal": false,
-                            "maximizable": false,
-                            "resizable": false
-                        }
-                    }
+        "basemaptoggler": {
+            "Config": {
+                "itemStyles": {
+                    "gray": "icon-thumbnail",
+                    "streets": "icon-thumbnail",
+                    "satellite": "icon-thumbnail",
+                    "hybrid": "icon-thumbnail"
                 }
-            ]
+            }
         },
         "map-init": {
             "Config": {
                 "basemaps": [
-                    {
+                     {
                         "id": "luftbildernrw",
                         "listMode": "hide",
                         "title": "Luftbilder NRW",
@@ -124,21 +117,29 @@
                         "thumbnailUrl": "resource('${app}:luftbild_grau.png')"
                     },
                     {
-                        "id": "topo",
-                        "title": "${map.basemaps.topo}",
-                        "basemap": {
-                            "type": "AGS_TILED",
-                            "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
-                        }
+                        "id": "gray",
+                        "basemap": "gray-vector",
+                        "title": "${map.basemaps.gray}",
+                        "thumbnailUrl": "resource('${app}:/assets/gray.png')",
+                        "selected": true
                     },
                     {
-                        "id": "custom_gray",
-                        "title": "${map.basemaps.gray}",
-                        "description": "This basemap uses a custom layer",
-                        "basemap": {
-                            "type": "AGS_TILED",
-                            "url": "https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer"
-                        }
+                        "id": "streets",
+                        "basemap": "streets-vector",
+                        "title": "${map.basemaps.streets}",
+                        "thumbnailUrl": "resource('${app}:/assets/streets.png')"
+                    },
+                    {
+                        "id": "satellite",
+                        "basemap": "satellite",
+                        "title": "${map.basemaps.topo}",
+                        "thumbnailUrl": "resource('${app}:/assets/topo.png')"
+                    },
+                    {
+                        "id": "hybrid",
+                        "basemap": "hybrid",
+                        "title": "${map.basemaps.hybrid}",
+                        "thumbnailUrl": "resource('${app}:/assets/hybrid.png')"
                     }
                 ],
                 "map": {
@@ -146,14 +147,14 @@
                         {
                             "id": "koeln1",
                             "title": "${map.koeln1.title}",
-                            "description": "Basisdaten der Stadt Köln",
-                            "url": "https://services.conterra.de/arcgis/rest/services/common/koeln/MapServer",
-                            "type": "AGS_DYNAMIC",
+                            "type": "GROUP",
                             "visible": true,
-                            "sublayers": [
+                            "layers": [
                                 {
                                     "title": "${map.koeln1.districts.title}",
-                                    "id": 11,
+                                    "url": "https://services.arcgis.com/ObdAEOfl1Z5LP2D0/arcgis/rest/services/Köln/FeatureServer/8",
+                                    "type": "AGS_FEATURE",
+                                    "visible": false,
                                     "opacity": 0.5,
                                     "popupTemplate": {
                                         "title": "{STV_NAME}",
@@ -161,23 +162,16 @@
                                             {
                                                 "type": "text",
                                                 "text": "${map.koeln1.districts.text}"
-                                            },
-                                            {
-                                                "type": "fields",
-                                                "fieldInfos": [
-                                                    {
-                                                        "fieldName": "STV_NR",
-                                                        "label": "${common.number}"
-                                                    }
-                                                ]
                                             }
                                         ]
                                     }
                                 },
                                 {
                                     "title": "${map.koeln1.boroughs.title}",
-                                    "id": 10,
+                                    "url": "https://services.arcgis.com/ObdAEOfl1Z5LP2D0/arcgis/rest/services/Köln/FeatureServer/7",
+                                    "type": "AGS_FEATURE",
                                     "opacity": 0.5,
+                                    "minScale": 80000,
                                     "popupTemplate": {
                                         "title": "{NAME}",
                                         "content": [
@@ -201,10 +195,6 @@
                                                             "places": 2,
                                                             "digitSeparator": true
                                                         }
-                                                    },
-                                                    {
-                                                        "fieldName": "NUMMER",
-                                                        "label": "${common.number}"
                                                     }
                                                 ]
                                             }
@@ -225,8 +215,10 @@
                                 },
                                 {
                                     "title": "${map.koeln1.precints.title}",
-                                    "id": 9,
+                                    "url": "https://services.arcgis.com/ObdAEOfl1Z5LP2D0/arcgis/rest/services/Köln/FeatureServer/6",
+                                    "type": "AGS_FEATURE",
                                     "opacity": 0.5,
+                                    "maxScale": 80000,
                                     "popupTemplate": {
                                         "title": "{NAME}",
                                         "content": [
@@ -250,10 +242,6 @@
                                                             "places": 2,
                                                             "digitSeparator": true
                                                         }
-                                                    },
-                                                    {
-                                                        "fieldName": "NUMMER",
-                                                        "label": "${common.number}"
                                                     }
                                                 ]
                                             }
@@ -277,15 +265,16 @@
                         {
                             "id": "koeln2",
                             "title": "${map.koeln2.title}",
-                            "url": "https://services.conterra.de/arcgis/rest/services/common/koeln/MapServer",
-                            "type": "AGS_DYNAMIC",
-                            "visible": true,
-                            "sublayers": [
+                            "description": "${map.koeln2.description}",
+                            "type": "GROUP",
+                            "layers": [
                                 {
                                     "title": "${map.koeln2.libraries.title}",
-                                    "id": 7,
+                                    "url": "https://services.arcgis.com/ObdAEOfl1Z5LP2D0/arcgis/rest/services/Köln/FeatureServer/1",
+                                    "type": "AGS_FEATURE",
+                                    "visible": true,
                                     "popupTemplate": {
-                                        "title": "{NAME}",
+                                        "title": "{NAME_LANG}",
                                         "content": [
                                             {
                                                 "type": "fields",
@@ -299,8 +288,8 @@
                                                         "label": "${common.address}"
                                                     },
                                                     {
-                                                        "fieldName": "TRAEGER",
-                                                        "label": "${common.provider}"
+                                                        "fieldName": "PLZ",
+                                                        "label": "${common.zip}"
                                                     }
                                                 ]
                                             }
@@ -309,7 +298,9 @@
                                 },
                                 {
                                     "title": "${map.koeln2.museums.title}",
-                                    "id": 6,
+                                    "url": "https://services.arcgis.com/ObdAEOfl1Z5LP2D0/arcgis/rest/services/Köln/FeatureServer/2",
+                                    "type": "AGS_FEATURE",
+                                    "visible": true,
                                     "popupTemplate": {
                                         "title": "Museum",
                                         "content": [
@@ -338,8 +329,11 @@
                                     }
                                 },
                                 {
+                                    "id": "schools",
                                     "title": "${map.koeln2.schools.title}",
-                                    "id": 5,
+                                    "url": "https://services.arcgis.com/ObdAEOfl1Z5LP2D0/arcgis/rest/services/Köln/FeatureServer/3",
+                                    "type": "AGS_FEATURE",
+                                    "visible": false,
                                     "popupTemplate": {
                                         "title": "{NAME}",
                                         "content": [
@@ -355,6 +349,10 @@
                                                         "label": "${common.address}"
                                                     },
                                                     {
+                                                        "fieldName": "SCHULART",
+                                                        "label": "${common.type}"
+                                                    },
+                                                    {
                                                         "fieldName": "TRAEGER",
                                                         "label": "${common.provider}"
                                                     }
@@ -368,13 +366,13 @@
                         {
                             "id": "koeln3",
                             "title": "${map.koeln3.title}",
-                            "url": "https://services.conterra.de/arcgis/rest/services/common/koeln/MapServer",
-                            "type": "AGS_DYNAMIC",
+                            "type": "GROUP",
                             "visible": true,
-                            "sublayers": [
+                            "layers": [
                                 {
                                     "title": "${map.koeln3.sights.title}",
-                                    "id": 3,
+                                    "url": "https://services.arcgis.com/ObdAEOfl1Z5LP2D0/arcgis/rest/services/Köln/FeatureServer/4",
+                                    "type": "AGS_FEATURE",
                                     "popupTemplate": {
                                         "title": "${map.koeln3.sights.titleSingle}",
                                         "content": [
@@ -404,7 +402,8 @@
                                 },
                                 {
                                     "title": "${map.koeln3.playgrounds.title}",
-                                    "id": 2,
+                                    "url": "https://services.arcgis.com/ObdAEOfl1Z5LP2D0/arcgis/rest/services/Köln/FeatureServer/5",
+                                    "type": "AGS_FEATURE",
                                     "visible": false,
                                     "popupTemplate": {
                                         "title": "{Typ}",
@@ -412,42 +411,14 @@
                                             {
                                                 "type": "text",
                                                 "text": "${map.koeln3.playgrounds.text}"
-                                            },
-                                            {
-                                                "type": "fields",
-                                                "fieldInfos": [
-                                                    {
-                                                        "fieldName": "Basketballk\u00F6rbe",
-                                                        "label": "${map.koeln3.playgrounds.baskets}"
-                                                    },
-                                                    {
-                                                        "fieldName": "Fussballtore",
-                                                        "label": "${map.koeln3.playgrounds.goals}"
-                                                    },
-                                                    {
-                                                        "fieldName": "Tischtennis_Tische",
-                                                        "label": "${map.koeln3.playgrounds.tables}"
-                                                    },
-                                                    {
-                                                        "fieldName": "Torwand",
-                                                        "label": "${map.koeln3.playgrounds.walls}"
-                                                    },
-                                                    {
-                                                        "fieldName": "Skaten",
-                                                        "label": "${map.koeln3.playgrounds.skate}"
-                                                    },
-                                                    {
-                                                        "fieldName": "Sonstiges",
-                                                        "label": "${map.koeln3.playgrounds.misc}"
-                                                    }
-                                                ]
                                             }
                                         ]
                                     }
                                 },
                                 {
                                     "title": "${map.koeln3.places.title}",
-                                    "id": 1,
+                                    "url": "https://services.arcgis.com/ObdAEOfl1Z5LP2D0/arcgis/rest/services/Köln/FeatureServer/9",
+                                    "type": "AGS_FEATURE",
                                     "popupTemplate": {
                                         "title": "${map.koeln3.places.titleSingle}",
                                         "content": [
@@ -472,51 +443,28 @@
                                                     }
                                                 ]
                                             }
-                                        ],
-                                        "expressionInfos": [
-                                            {
-                                                "name": "carrier",
-                                                "expression": "IIf($feature.TRAEGER == \"Privat\", \"${common.private}\", \"${common.municipal}\")"
-                                            }
                                         ]
                                     }
                                 }
                             ]
                         }
-                    ],
-                    "ground": {
-                        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
-                        "type": "ELEVATION"
-                    }
+                    ]
                 },
                 "view": {
                     "viewmode": "2D",
-                    "extent": {
-                        "xmin": 753914,
-                        "ymin": 6590000,
-                        "xmax": 797273,
-                        "ymax": 6635000,
+                    "center": {
+                        "x": 774853,
+                        "y": 6610677,
                         "spatialReference": 3857
-                    }
+                    },
+                    "scale": 140000
                 }
             }
         },
-        "themes": {
-            "ThemeModel": {
-                "_selectedTheme": "autumn"
-            },
-            "ThemeSelector": {
-                "componentEnabled": true
-            }
-        },
-        "templates": {
-            "TemplateModel": {
-                "_templates": [
-                    {
-                        "name": "seasons",
-                        "widgets": []
-                    }
-                ]
+        "toc": {
+            "Config": {
+                "showBasemaps": true,
+                "showLayerLegend": true
             }
         },
         "toolset": {
@@ -525,14 +473,63 @@
                     {
                         "id": "mapview_tools",
                         "tools": [
-                            "*"
+                            "basemapFaderToggleTool",
+                            "locateMeTool",
+                            "zoomInTool",
+                            "zoomOutTool",
+                            "compassTool",
+                            "restoreInitialViewTool",
+                            "viewmodeSwitcherTool"
                         ],
                         "registerWidget": {
                             "widgetRole": "mapview_tools"
                         },
                         "container": "ignore",
                         "windowType": "container",
-                        "cssClass": "muted"
+                        "cssClass": "muted",
+                        "tooltipPositions": [
+                            "before",
+                            "above",
+                            "below",
+                            "after"
+                        ]
+                    },
+                    {
+                        "id": "drawer_left",
+                        "title": "${tools.drawerLeft}",
+                        "cssClass": "ct-main-app-menu",
+                        "tools": [
+                            "selection-ui-tool",
+                            "sketchToggleTool",
+                            "measuring_tools",
+                            "printingToggleTool"
+                        ],
+                        "registerWidget": {
+                            "widgetRole": "drawer_button"
+                        },
+                        "container": "ignore",
+                        "windowType": "drawer_left",
+                        "tooltipPositions": [
+                            "after",
+                            "above",
+                            "below",
+                            "before"
+                        ]
+                    },
+                    {
+                        "id": "measuring_tools",
+                        "title": "${tools.measuring}",
+                        "iconClass": "icon-editor-table",
+                        "tools": [
+                            "distanceMeasurement2DToggleTool",
+                            "areaMeasurement2DToggleTool"
+                        ],
+                        "container": "ignore",
+                        "registerTool": true,
+                        "windowType": "menuitem",
+                        "tooltipPositions": [
+                            "after"
+                        ]
                     }
                 ]
             }
@@ -542,6 +539,43 @@
                 "activateOnStartToolIds": [
                     "basemapFaderToggleTool"
                 ]
+            }
+        },
+        "dn_imprintprivacy": {
+            "ToolHandler": {
+                "imprintUrls": [
+                    {
+                        "locale": "de",
+                        "url": "https://www.conterra.de/impressum"
+                    },
+                    {
+                        "locale": "en",
+                        "url": "https://www.con-terra.com/imprint"
+                    }
+                ],
+                "privacyUrls": [
+                    {
+                        "locale": "de",
+                        "url": "https://www.conterra.de/datenschutzhinweise"
+                    },
+                    {
+                        "locale": "en",
+                        "url": "https://www.con-terra.com/privacy-statements"
+                    }
+                ],
+                "toolsetDefinition": {
+                    "id": "imprintprivacyToolset",
+                    "tools": [
+                        "imprintTool",
+                        "privacyStatementsTool"
+                    ],
+                    "registerWidget": {
+                        "widgetRole": "footer_right"
+                    },
+                    "container": "ignore",
+                    "windowType": "container",
+                    "cssClass": "showToolLabels"
+                }
             }
         }
     }

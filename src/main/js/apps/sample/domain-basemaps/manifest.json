@@ -19,11 +19,6 @@
                 "id": "streets",
                 "basemap": "streets-vector",
                 "title": "Streets"
-            },
-            {
-                "id": "esri_street",
-                "basemap": "gray-vector",
-                "title": "Gray streets"
             }
         ]
     }
