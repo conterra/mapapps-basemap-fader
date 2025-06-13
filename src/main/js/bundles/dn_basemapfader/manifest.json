@@ -31,7 +31,6 @@
                 "autofocus": false,
                 "dockable": true,
                 "dockTool": "basemapFaderToggleTool",
-                "dockingBar": "${id}-dockingBarBottomLeft",
                 "marginBox": {
                     "t": 42,
                     "w": 500,
