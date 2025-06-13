@@ -81,6 +81,7 @@
                         "listMode": "hide",
                         "title": "Luftbilder NRW",
                         "description": "Orthophotos, Bodenauflösung von 10cm/Pixel.",
+                        "selected": true,
                         "basemap": {
                             "url": "https://www.wms.nrw.de/geobasis/wms_nw_dop",
                             "type": "WMS",
@@ -120,8 +121,7 @@
                         "id": "gray",
                         "basemap": "gray-vector",
                         "title": "${map.basemaps.gray}",
-                        "thumbnailUrl": "resource('${app}:/assets/gray.png')",
-                        "selected": true
+                        "thumbnailUrl": "resource('${app}:/assets/gray.png')"
                     },
                     {
                         "id": "streets",
