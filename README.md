@@ -6,7 +6,7 @@ The Basemap Fader bundle provides a widget that allows you to fade two basemap i
 
 ## Sample App
 
-https://demos.conterra.de/mapapps/resources/apps/downloads_basemapfader4/index.html
+https://demos.conterra.de/mapapps/resources/apps/public_demo_basemapfader/index.html
 
 ![Screenshot Sample App Basemap Fader](https://github.com/conterra/mapapps-basemap-fader/blob/main/screenshot.png)
 
