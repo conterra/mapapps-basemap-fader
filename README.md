@@ -10,10 +10,6 @@ https://demos.conterra.de/mapapps/resources/apps/public_demo_basemapfader/index.
 
 ![Screenshot Sample App Basemap Fader](https://github.com/conterra/mapapps-basemap-fader/blob/main/screenshot.png)
 
-## Installation Guide
-
-**Requirement: map.apps 4.3.0**
-
 [dn_basemapfader Documentation](https://github.com/conterra/mapapps-basemap-fader/tree/master/src/main/js/bundles/dn_basemapfader)
 
 ## Quick start
