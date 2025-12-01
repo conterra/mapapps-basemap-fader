@@ -11,7 +11,7 @@
         "apprt-vuetify": "^4.3.0",
         "map-basemaps-api": "^4.0.0"
     },
-    "CSS-Themes-Extension": [
+    "cssThemesExtension": [
         {
             "name": "*",
             "files": [
